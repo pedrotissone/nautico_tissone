@@ -96,40 +96,40 @@
 
             // PRIMER DESAFÍO
 
-// let dolphin23 = 100
-// let h20 = 50
-// let limpiezaFinal = 25
+let dolphin23 = 100
+let h20 = 50
+let limpiezaFinal = 25
 
-// function calcularAlquiler(eleccion, dias, limpieza){
-//     console.log("El costo del alquiler es de " + (eleccion + dias + limpieza) + " pesos")
-// }
+function calcularAlquiler(eleccion, dias, limpieza){
+    console.log("El costo del alquiler es de " + (eleccion + dias + limpieza) + " pesos")
+}
 
-// debugger
-// let pregunta = prompt("Quiere alquilar un velero?")
-// while (pregunta != "si") {
-//     switch (pregunta) {
-//         case "si":
-//             console.log("Genial")
-//             break;
+debugger
+let pregunta = prompt("Quiere alquilar un velero?")
+while (pregunta != "si") {
+    switch (pregunta) {
+        case "si":
+            console.log("Genial")
+            break;
     
-//         default:
-//             pregunta = prompt("Insisto, quiere alquilar un velero?")
-//             break;
-//     }    
-// }
+        default:
+            pregunta = prompt("Insisto, quiere alquilar un velero?")
+            break;
+    }    
+}
 
-// let barco = prompt("Tenemos un dolphin23 y un h20, cual quiere?")
-// if (barco == "h20") {
-//     eleccion = h20
-//     dias = parseInt(prompt("por cuantos dias lo quiere?")) * 10
-//     calcularAlquiler(eleccion, dias, limpiezaFinal)  
-// } else if (barco == "dolphin23") {
-//     eleccion = dolphin23
-//     dias = parseInt(prompt("por cuantos dias lo quiere?")) * 10
-//     calcularAlquiler(eleccion, dias, limpiezaFinal)    
-// } else{
-//     alert("Lo lamento no tenemos stock")
-// }
+let barco = prompt("Tenemos un dolphin23 y un h20, cual quiere?")
+if (barco == "h20") {
+    eleccion = h20
+    dias = parseInt(prompt("por cuantos dias lo quiere?")) * 10
+    calcularAlquiler(eleccion, dias, limpiezaFinal)  
+} else if (barco == "dolphin23") {
+    eleccion = dolphin23
+    dias = parseInt(prompt("Escriba en numeros la cantidad de dias que lo quiere?")) * 10
+    calcularAlquiler(eleccion, dias, limpiezaFinal)    
+} else{
+    alert("Lo lamento el barco seleccionado no está disponible")
+}
 
 
 
