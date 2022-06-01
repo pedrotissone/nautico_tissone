@@ -1,0 +1,11 @@
+.headerIndex {
+  display: flex;
+  flex-flow: row,nowrap;
+  justify-content: center; }
+  .headerIndex h1 {
+    color: #8e8e10; }
+
+.mainIndex article {
+  color: #8e8e10;
+  text-align: center;
+  border: solid 1px black; }

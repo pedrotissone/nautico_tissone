@@ -1,0 +1,21 @@
+
+.headerIndex{
+    display: flex;
+    flex-flow: row,nowrap;
+    justify-content: center;
+
+    h1 {
+        color: rgb(142, 142, 16);
+        
+    }
+}
+
+.mainIndex {
+    
+    article{
+        color: rgb(142, 142, 16);
+        text-align: center;
+        border: solid 1px black;
+    }
+}
+
