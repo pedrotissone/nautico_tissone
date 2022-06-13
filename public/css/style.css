@@ -1,11 +1,29 @@
 .headerIndex {
-  display: flex;
-  flex-flow: row,nowrap;
-  justify-content: center; }
+  height: auto; }
   .headerIndex h1 {
-    color: #8e8e10; }
+    text-align: center;
+    color: #10558e; }
+  .headerIndex .navMenu {
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-around;
+    font-size: large;
+    color: #10558e;
+    text-decoration: underline;
+    border: solid 1px grey;
+    background-color: beige; }
 
 .mainIndex article {
-  color: #8e8e10;
+  color: #10558e;
   text-align: center;
-  border: solid 1px black; }
+  font-size: large; }
+
+.footerIndex {
+  display: flex;
+  flex-flow: row, nowrap;
+  justify-content: space-around;
+  font-size: large;
+  color: #10558e;
+  text-decoration: underline;
+  border: solid 1px grey;
+  background-color: beige; }

@@ -1,21 +1,46 @@
 
-.headerIndex{
-    display: flex;
-    flex-flow: row,nowrap;
-    justify-content: center;
+
+.headerIndex{    
+    height: auto;
+    
 
     h1 {
-        color: rgb(142, 142, 16);
-        
+        text-align: center;
+        color: rgb(16, 85, 142);
+    }
+
+    .navMenu{
+        display: flex;
+        flex-flow: row, nowrap;
+        justify-content: space-around;
+        font-size: large;
+        color: rgb(16, 85, 142);
+        text-decoration: underline;
+        border: solid 1px grey;
+        background-color: beige;
+
     }
 }
 
 .mainIndex {
+
     
     article{
-        color: rgb(142, 142, 16);
+        color: rgb(16, 85, 142);
         text-align: center;
-        border: solid 1px black;
+        font-size: large;
     }
+}
+
+.footerIndex{
+    display: flex;
+    flex-flow: row, nowrap;
+    justify-content: space-around;
+    font-size: large;
+    color: rgb(16, 85, 142);
+    text-decoration: underline;
+    border: solid 1px grey;
+    background-color: beige;
+    
 }
 
