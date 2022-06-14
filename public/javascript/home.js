@@ -1,166 +1,192 @@
 
-
-
-
-
-
 // //                  PRIMERA PRE ENTREGA PROYECTO FINAL!!!!!!!!!!!
 
-                                // ELEGIR BARCO
+                                //CLASES
 
 class Barcos{
-    constructor(tipo, valor){
+    constructor(tipo, precio, cantidad){
         this.tipo = tipo
-        this.valor = valor    
+        this.precio = precio
+        this.cantidad = cantidad   
     }
 }
 
-const barco1 = new Barcos("h 20", 1500)
-const barco2 = new Barcos("limbo 21", 2000)
-const barco3 = new Barcos("j 24", 3000)
-const barco4 = new Barcos("dolphin 23", 3000)
-const barco5 = new Barcos("h 26", 4000)
-const barco6 = new Barcos("regge 23", 2000)
+const barco1 = new Barcos("h 20", 1500, 3)
+const barco2 = new Barcos("limbo 21", 2000,2)
+const barco3 = new Barcos("j 24", 3000, 2)
+const barco4 = new Barcos("dolphin 23", 3000, 1)
+const barco5 = new Barcos("h 26", 4000, 1)
+const barco6 = new Barcos("regge 23", 2000, 1)
+
+
+class Equipamiento{
+    constructor(nombre, precio, cantidad){
+        this.nombre = nombre
+        this.precio = precio
+        this.cantidad = cantidad
+    }
+}
+
+const equipamiento1 = new Equipamiento("gps garmin", 1000, 3)
+const equipamiento2 = new Equipamiento("prismatico", 2000, 2)
+const equipamiento3 = new Equipamiento("pinula", 500, 3)
+const equipamiento4 = new Equipamiento("carta nautica", 500, 5)
+const equipamiento5 = new Equipamiento("sextante", 2000, 1)
 
 
 
 
 const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
+const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5]
+
+const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
+
+
+
 function buscarBarco() {
-    let busqueda = prompt("Ingrese el barco que desea buscar").toLowerCase()
-    let resultado = arrayBarcos.find( (arrayBarcos) => arrayBarcos.tipo.includes(busqueda))
-    console.log(resultado)
-    if (resultado) {
-        console.log("la consola js encontro una embarcación")
-    } else{
+    let busqueda = prompt("Ingrese el barco que desea buscar").toLowerCase()    
+    let resultado = arrayBarcos.filter((arrayBarcos) => arrayBarcos.tipo.includes(busqueda))
+      if (resultado.length !== 0) {
+        return console.table(resultado)
+      } else {
+        console.log("Lo lamento, no tenemos el barco seleccionado")
         buscarBarco()
-    }  
-   
-    
+      }
 }
-debugger
+
+function calcularCarrito(){
+ let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+ return console.log(total)
+}
+
 buscarBarco()
 
-//                              SELECCIONAR DIA DEL MES
-
-const calendario = []
-const reservas = []
-let trueFalse = true 
-
-for(let i = 1; i <= 31; i++){
-      calendario.push(i)
-      console.log(calendario)
-  } 
+calcularCarrito()
 
 
-    function preguntar1() {     
-        let diaDesde = parseInt(prompt("Elegi un dia del mes"))      
-        while (diaDesde <= 0 || diaDesde > 31){
-            console.log("Ese dia no esta disponible")
-            diaDesde = parseInt(prompt("Debe elegir un día dentro del calendario"))
-        }
-        if (reservas.includes(diaDesde)){
-            return console.log("fecha ocupada")
-        } else {         
-         return diaDesde                
-    }
-    }
+
+
+
+// //                              SELECCIONAR DIA DEL MES
+
+// const calendario = []
+// const reservas = []
+// let trueFalse = true 
+
+// for(let i = 1; i <= 31; i++){
+//       calendario.push(i)
+//       console.log(calendario)
+//   } 
+
+
+//     function preguntar1() {     
+//         let diaDesde = parseInt(prompt("Elegi un dia del mes"))      
+//         while (diaDesde <= 0 || diaDesde > 31){
+//             console.log("Ese dia no esta disponible")
+//             diaDesde = parseInt(prompt("Debe elegir un día dentro del calendario"))
+//         }
+//         if (reservas.includes(diaDesde)){
+//             return console.log("fecha ocupada")
+//         } else {         
+//          return diaDesde                
+//     }
+//     }
         
-    function preguntar2(){
-       let diaHasta = parseInt(prompt("Elija hasta que día desea alquilar"))
-        if (diaHasta <= diaDesde || diaHasta > 31){
-            console.log("Debe elegir una fecha dentro del calendario")
-            diaHasta = parseInt(prompt("elija nuevamente hasta que día desea alquilar"))
-        } else {
-            return diaHasta          
+//     function preguntar2(){
+//        let diaHasta = parseInt(prompt("Elija hasta que día desea alquilar"))
+//         if (diaHasta <= diaDesde || diaHasta > 31){
+//             console.log("Debe elegir una fecha dentro del calendario")
+//             diaHasta = parseInt(prompt("elija nuevamente hasta que día desea alquilar"))
+//         } else {
+//             return diaHasta          
              
-        }
-        }
+//         }
+//         }
         
-    function quitarCalendario() {        
-        return calendario.splice(indexDesde, indexHasta)   
+//     function quitarCalendario() {        
+//         return calendario.splice(indexDesde, indexHasta)   
        
-        }     
+//         }     
 
        
-let diaDesde = preguntar1()
+// let diaDesde = preguntar1()
 
 
-let diaHasta = preguntar2()
+// let diaHasta = preguntar2()
 
-let indexDesde = calendario.indexOf(diaDesde)
+// let indexDesde = calendario.indexOf(diaDesde)
 
-let indexHasta = (diaHasta - diaDesde) + 1
+// let indexHasta = (diaHasta - diaDesde) + 1
 
-quitarCalendario()
-
-
-
-function ocuparReserva () {
-    for ( i = diaDesde; i <= diaHasta; i++) {
-        reservas.push(i);        
-    }
-    if (calendario.includes(diaDesde || diaHasta)){
-        alert("La fecha esta ocupada")
-    } else{
-        console.log("Reserva completada")
-    }
-}
-let ocupadoHasta = ocuparReserva()
-console.log(calendario)
-console.log(reservas)
+// quitarCalendario()
 
 
-//                         //CALENDARIO DE M A R T I N I A N O!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+// function ocuparReserva () {
+//     for ( i = diaDesde; i <= diaHasta; i++) {
+//         reservas.push(i);        
+//     }
+//     if (calendario.includes(diaDesde || diaHasta)){
+//         alert("La fecha esta ocupada")
+//     } else{
+//         console.log("Reserva completada")
+//     }
+// }
+// let ocupadoHasta = ocuparReserva()
+// console.log(calendario)
+// console.log(reservas)
 
 
-// // const calendario = []
-// // const reservas = []
-// // let trueFalse = true
-
-// // const result = {
-// //     diaDesde: "",
-// //     diaHasta: "",
-// // }
-
-// // for (let i = 1; i <= 31; i++) {
-// //     calendario.push(i)
-// //     console.log(calendario)
-// // }
+                        //CALENDARIO DE M A R T I N I A N O!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 
-// // function preguntar1() {
-// //     let diaDesde = parseInt(prompt("Elegi un dia del mes"))
-// //     while ((diaDesde <= 0) && (diaDesde > 31)) {
-// //         console.log("Ese dia no esta disponible")
-// //         diaDesde = parseInt(prompt("Debe elegir un día dentro del calendario"))
-// //     }
-// //     if (reservas.includes(diaDesde)) {
-// //         return console.log("fecha ocupada")
-// //     } else {
-// //         result.diaDesde = diaDesde
-// //     }
-// // }
-// // debugger
-// // preguntar1()
+// const calendario = []
+// const reservas = []
+// let trueFalse = true
 
-// // function preguntar2() {
-// //     let diaHasta = parseInt(prompt("Elija hasta que día desea alquilar"))
-// //     if ((diaHasta <= result.diaDesde) && (diaHasta > 31)) {
-// //         console.log("Debe elegir una fecha dentro del calendario")
-// //         diaHasta = parseInt(prompt("elija nuevamente hasta que día desea alquilar"))
-// //     } else {
-// //         result.diaHasta = diaHasta
+// const result = {
+//     diaDesde: "",
+//     diaHasta: "",
+// }
 
-// //     }
-// // }
-// // preguntar2()
+// for (let i = 1; i <= 31; i++) {
+//     calendario.push(i)
+//     console.log(calendario)
+// }
 
-// // function quitarCalendario() {
-// //     return calendario.splice(indexDesde, indexHasta)
 
-// // }
+// function preguntar1() {
+//     let diaDesde = parseInt(prompt("Elegi un dia del mes"))
+//     while ((diaDesde <= 0) && (diaDesde > 31)) {
+//         console.log("Ese dia no esta disponible")
+//         diaDesde = parseInt(prompt("Debe elegir un día dentro del calendario"))
+//     }
+//     if (reservas.includes(diaDesde)) {
+//         return console.log("fecha ocupada")
+//     } else {
+//         result.diaDesde = diaDesde
+//     }
+// }
+// debugger
+// preguntar1()
+
+// function preguntar2() {
+//     let diaHasta = parseInt(prompt("Elija hasta que día desea alquilar"))
+//     if ((diaHasta <= result.diaDesde) && (diaHasta > 31)) {
+//         console.log("Debe elegir una fecha dentro del calendario")
+//         diaHasta = parseInt(prompt("elija nuevamente hasta que día desea alquilar"))
+//     } else {
+//         result.diaHasta = diaHasta
+
+//     }
+// }
+// preguntar2()
+
+// function quitarCalendario() {
+//     return calendario.splice(indexDesde, indexHasta)
+
+// }
 
 
 
