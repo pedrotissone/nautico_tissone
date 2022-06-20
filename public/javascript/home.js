@@ -20,49 +20,70 @@ const barco6 = new Barcos("regge 23", 2000, 1)
 
 
 class Equipamiento{
-    constructor(nombre, precio, cantidad){
+    constructor(id, nombre, precio, cantidad){
+        this.id = id
         this.nombre = nombre
         this.precio = precio
         this.cantidad = cantidad
     }
 }
 
-const equipamiento1 = new Equipamiento("gps garmin", 1000, 3)
-const equipamiento2 = new Equipamiento("prismatico", 2000, 2)
-const equipamiento3 = new Equipamiento("pinula", 500, 3)
-const equipamiento4 = new Equipamiento("carta nautica", 500, 5)
-const equipamiento5 = new Equipamiento("sextante", 2000, 1)
+const equipamiento1 = new Equipamiento(0, "gps garmin", 1000, 3)
+const equipamiento2 = new Equipamiento(0, "prismatico", 2000, 2)
+const equipamiento3 = new Equipamiento(0, "pinula", 500, 3)
+const equipamiento4 = new Equipamiento(0,  "carta nautica", 500, 5)
+const equipamiento5 = new Equipamiento(0,"sextante", 2000, 1)
+const equipamiento6 = new Equipamiento(0, "bichero", 500, 3)
 
 
 
 
 const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
-const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5]
+const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
 
 const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
 
 
 
-function buscarBarco() {
-    let busqueda = prompt("Ingrese el barco que desea buscar").toLowerCase()    
-    let resultado = arrayBarcos.filter((arrayBarcos) => arrayBarcos.tipo.includes(busqueda))
-      if (resultado.length !== 0) {
-        return console.table(resultado)
-      } else {
-        console.log("Lo lamento, no tenemos el barco seleccionado")
-        buscarBarco()
-      }
+// function buscarBarco() {
+//     let busqueda = prompt("Ingrese el barco que desea buscar").toLowerCase()    
+//     let resultado = arrayBarcos.filter((arrayBarcos) => arrayBarcos.tipo.includes(busqueda))
+//       if (resultado.length !== 0) {
+//         return console.table(resultado)
+//       } else {
+//         console.log("Lo lamento, no tenemos el barco seleccionado")
+//         buscarBarco()
+//       }
+// }
+
+// function calcularCarrito(){
+//  let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+//  return console.log(total)
+// }
+
+// // buscarBarco()
+
+// // calcularCarrito()
+
+function listarEquipamiento() {
+  debugger
+  arrayEquipamiento.forEach( (equip)=>{
+    const listado = `<tr>
+                      <td>${equip.id}</td>
+                      <td>${equip.nombre}</td>
+                      <td>${equip.precio}</td>
+                      <td>${equip.cantidad}</td>
+                    </tr>`
+                    document.querySelector("tbody").innerHTML += listado
+  });
 }
+listarEquipamiento()
 
-function calcularCarrito(){
- let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
- return console.log(total)
-}
 
-buscarBarco()
 
-calcularCarrito()
+
+
 
 
 
