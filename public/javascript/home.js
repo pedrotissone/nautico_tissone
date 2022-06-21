@@ -28,12 +28,12 @@ class Equipamiento{
     }
 }
 
-const equipamiento1 = new Equipamiento(0, "gps garmin", 1000, 3)
-const equipamiento2 = new Equipamiento(0, "prismatico", 2000, 2)
-const equipamiento3 = new Equipamiento(0, "pinula", 500, 3)
-const equipamiento4 = new Equipamiento(0,  "carta nautica", 500, 5)
-const equipamiento5 = new Equipamiento(0,"sextante", 2000, 1)
-const equipamiento6 = new Equipamiento(0, "bichero", 500, 3)
+const equipamiento1 = new Equipamiento(1, "gps garmin", 1000, 3)
+const equipamiento2 = new Equipamiento(2, "prismatico", 2000, 2)
+const equipamiento3 = new Equipamiento(3, "pinula", 500, 3)
+const equipamiento4 = new Equipamiento(4,  "carta nautica", 500, 5)
+const equipamiento5 = new Equipamiento(5,"sextante", 2000, 1)
+const equipamiento6 = new Equipamiento(6, "bichero", 500, 3)
 
 
 
@@ -41,8 +41,9 @@ const equipamiento6 = new Equipamiento(0, "bichero", 500, 3)
 const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
 const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
-
-const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
+const arrayCarrito = []
+// ESTE CARRITO DE ACA ABAJO ESTA HECHO PARA LA FUNCION CALCULAR CARRITO QUE USA EL METODO REDUCE
+// const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
 
 
 
@@ -66,8 +67,9 @@ const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
 
 // // calcularCarrito()
 
+
+
 function listarEquipamiento() {
-  debugger
   arrayEquipamiento.forEach( (equip)=>{
     const listado = `<tr>
                       <td>${equip.id}</td>
@@ -76,9 +78,27 @@ function listarEquipamiento() {
                       <td>${equip.cantidad}</td>
                     </tr>`
                     document.querySelector("tbody").innerHTML += listado
+                    
   });
 }
 listarEquipamiento()
+
+
+
+
+
+
+
+                            // EVENTOS
+
+const imagen = document.querySelector(".card-img-top")
+imagen.addEventListener("click", ()=> {
+  alert("escuchando evento")
+})
+
+
+
+
 
 
 

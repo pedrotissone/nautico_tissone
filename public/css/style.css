@@ -41,3 +41,8 @@ tr {
 td {
   border: solid 1px black;
   padding: 10px; }
+
+#articulosSeleccionados {
+  text-align: center;
+  text-decoration: underline;
+  margin-top: 3%; }
