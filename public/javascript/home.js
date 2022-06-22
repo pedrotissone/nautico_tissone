@@ -42,6 +42,7 @@ const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
 const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
 const arrayCarrito = []
+
 // ESTE CARRITO DE ACA ABAJO ESTA HECHO PARA LA FUNCION CALCULAR CARRITO QUE USA EL METODO REDUCE
 // const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
 
@@ -58,16 +59,16 @@ const arrayCarrito = []
 //       }
 // }
 
-// function calcularCarrito(){
-//  let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
-//  return console.log(total)
-// }
+function calcularCarrito(){
+ let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+ return console.log(total)
+}
 
 // // buscarBarco()
 
 // // calcularCarrito()
 
-
+                                                  // GENERACION DE TABLA DE PRODUCTOS DINAMICA
 
 function listarEquipamiento() {
   arrayEquipamiento.forEach( (equip)=>{
@@ -76,6 +77,7 @@ function listarEquipamiento() {
                       <td>${equip.nombre}</td>
                       <td>${equip.precio}</td>
                       <td>${equip.cantidad}</td>
+                      <td><button class="boton" id="${equip.id}"> AGREGAR </button></td>
                     </tr>`
                     document.querySelector("tbody").innerHTML += listado
                     
@@ -84,27 +86,32 @@ function listarEquipamiento() {
 listarEquipamiento()
 
 
+                                                        // CARGA DE EQUIPAMIENTO AL CARRITO
+
+const boton = document.querySelectorAll(".boton")
 
 
-
-
-
-                            // EVENTOS
-
-const imagen = document.querySelector(".card-img-top")
-imagen.addEventListener("click", ()=> {
-  alert("escuchando evento")
+boton.forEach(elm => {
+  elm.addEventListener("click", (e) => {
+   let resultado = e.target.id
+   busquedaArray(resultado)
+  })
 })
+console.log(boton)
 
+function busquedaArray(id){
+  let resultado = arrayEquipamiento.filter(elm => elm.id == id)
+  console.log(resultado[0])
+  arrayCarrito.push(resultado[0])
+}
 
+                                                            // CALCULAR CARRITO
 
-
-
-
-
-
-
-
+const botonContinuar = document.getElementById("botonContinuar")
+botonContinuar.addEventListener("click", ()=>{
+  debugger
+  calcularCarrito()
+})
 
 
 
