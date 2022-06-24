@@ -1,22 +1,25 @@
 
-// //                  PRIMERA PRE ENTREGA PROYECTO FINAL!!!!!!!!!!!
 
-                                //CLASES
+                                                //C L A S E S
 
 class Barcos{
-    constructor(tipo, precio, cantidad){
+    constructor(id, tipo, precio, cantidad){
+        this.id = id
         this.tipo = tipo
         this.precio = precio
         this.cantidad = cantidad   
     }
 }
 
-const barco1 = new Barcos("h 20", 1500, 3)
-const barco2 = new Barcos("limbo 21", 2000,2)
-const barco3 = new Barcos("j 24", 3000, 2)
-const barco4 = new Barcos("dolphin 23", 3000, 1)
-const barco5 = new Barcos("h 26", 4000, 1)
-const barco6 = new Barcos("regge 23", 2000, 1)
+const barco1 = new Barcos(1, "h 20", 1500, 3)
+const barco2 = new Barcos(2, "limbo 21", 2000,2)
+const barco3 = new Barcos(3, "j 24", 3000, 2)
+const barco4 = new Barcos(4, "dolphin 23", 3000, 1)
+const barco5 = new Barcos(5, "h 26", 4000, 1)
+const barco6 = new Barcos(6, "regge 23", 2000, 1)
+
+
+
 
 
 class Equipamiento{
@@ -36,17 +39,17 @@ const equipamiento5 = new Equipamiento(5,"sextante", 2000, 1)
 const equipamiento6 = new Equipamiento(6, "bichero", 500, 3)
 
 
+//                                              A R R A Y S
 
 
 const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
 const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
+
 const arrayCarrito = []
 
-// ESTE CARRITO DE ACA ABAJO ESTA HECHO PARA LA FUNCION CALCULAR CARRITO QUE USA EL METODO REDUCE
-// const arrayCarrito =[equipamiento1, equipamiento3, equipamiento4, barco5]
 
-
+//                                          BUSQUEDA DEL BARCO DESEADO (QUIZAS LO SAQUE DEL PROYECTO)
 
 // function buscarBarco() {
 //     let busqueda = prompt("Ingrese el barco que desea buscar").toLowerCase()    
@@ -59,14 +62,14 @@ const arrayCarrito = []
 //       }
 // }
 
-function calcularCarrito(){
- let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
- return console.log(total)
-}
-
 // // buscarBarco()
 
-// // calcularCarrito()
+function calcularCarrito(){
+ let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+ return console.log("El total es de su alquiler es de $ " + total) 
+}
+
+
 
                                                   // GENERACION DE TABLA DE PRODUCTOS DINAMICA
 
@@ -85,12 +88,28 @@ function listarEquipamiento() {
 }
 listarEquipamiento()
 
+//                                                        CARGA DE BARCO AL CARRITO
 
+const botonBarcos = document.querySelectorAll(".boton-barcos")
+
+botonBarcos.forEach(elm => {
+  elm.addEventListener("click", (e) => {
+    let resultado = e.target.id
+    busquedaArrayBarcos(resultado)
+  })
+})
+console.log(botonBarcos)
+
+function busquedaArrayBarcos(id){
+  let resultado = arrayBarcos.filter(elm => elm.id == id)
+  console.log(resultado[0])
+  arrayCarrito.push(resultado[0])
+}
                                                         // CARGA DE EQUIPAMIENTO AL CARRITO
 
 const boton = document.querySelectorAll(".boton")
 
-
+debugger
 boton.forEach(elm => {
   elm.addEventListener("click", (e) => {
    let resultado = e.target.id
@@ -99,22 +118,66 @@ boton.forEach(elm => {
 })
 console.log(boton)
 
+
 function busquedaArray(id){
   let resultado = arrayEquipamiento.filter(elm => elm.id == id)
   console.log(resultado[0])
   arrayCarrito.push(resultado[0])
 }
 
-                                                            // CALCULAR CARRITO
+                                                            // CALCULAR TOTAL DEL CARRITO
 
 const botonContinuar = document.getElementById("botonContinuar")
 botonContinuar.addEventListener("click", ()=>{
-  debugger
   calcularCarrito()
+  guardarCarrito()
+  
 })
 
+//                                                                LOCALSTORAGE DEL CARRITO CON JSON
+
+function guardarCarrito(){  
+  const  ultimoCarrito = JSON.stringify(arrayCarrito)
+  localStorage.setItem("ultimoCarrito", ultimoCarrito)
+
+}
+
+const recuperoCarrito = JSON.parse(localStorage.getItem("ultimoCarrito"))
 
 
+function calcularCarritoAnterior(){
+  let total = recuperoCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+  return console.log("El total es de su alquiler es de $ " + total) 
+ }
+ 
+
+
+//                                     PREGUNTAR SI DESEA REPETIR EL ULTIMO ALQUILER EFECTUADO CADA VEZ QUE INGRESAS AL SITIO
+
+if (JSON.parse(localStorage.getItem("ultimoCarrito"))){
+  let pregunta = prompt("Desea repetir el alquiler si o no")
+  switch (pregunta.toLowerCase()) {
+    case "si":
+            calcularCarritoAnterior()
+      break;
+  
+    default:
+      console.log("bienvenido al nautico virtual")
+      break;
+  }
+
+} else{
+    console.log("bienvenido al nautico virtual")
+}
+
+
+
+    
+
+
+
+
+//                                  EL CALENDARIO LO VOY A DEJAR PARA EL FINAL, SEGUN COMO VENGA CON EL PROYECTO
 
 // //                              SELECCIONAR DIA DEL MES
 
@@ -343,4 +406,3 @@ botonContinuar.addEventListener("click", ()=>{
 // }
 
 // alquilar()
-
