@@ -71,6 +71,7 @@ function calcularCarrito(){
 
 
 
+
                                                   // GENERACION DE TABLA DE PRODUCTOS DINAMICA
 
 function listarEquipamiento() {
@@ -80,7 +81,7 @@ function listarEquipamiento() {
                       <td>${equip.nombre}</td>
                       <td>${equip.precio}</td>
                       <td>${equip.cantidad}</td>
-                      <td><button class="boton" id="${equip.id}"> AGREGAR </button></td>
+                      <td><button class="boton  btn btn-primary" id="${equip.id}"> AGREGAR </button></td>
                     </tr>`
                     document.querySelector("tbody").innerHTML += listado
                     
@@ -88,35 +89,41 @@ function listarEquipamiento() {
 }
 listarEquipamiento()
 
+
+ 
 //                                                        CARGA DE BARCO AL CARRITO
 
 const botonBarcos = document.querySelectorAll(".boton-barcos")
 
 botonBarcos.forEach(elm => {
   elm.addEventListener("click", (e) => {
-    let resultado = e.target.id
+    let resultado = e.target.id    
     busquedaArrayBarcos(resultado)
+  
   })
 })
-console.log(botonBarcos)
+
 
 function busquedaArrayBarcos(id){
   let resultado = arrayBarcos.filter(elm => elm.id == id)
   console.log(resultado[0])
   arrayCarrito.push(resultado[0])
 }
+
+
                                                         // CARGA DE EQUIPAMIENTO AL CARRITO
 
 const boton = document.querySelectorAll(".boton")
 
-debugger
+
+
 boton.forEach(elm => {
   elm.addEventListener("click", (e) => {
    let resultado = e.target.id
    busquedaArray(resultado)
   })
 })
-console.log(boton)
+
 
 
 function busquedaArray(id){
@@ -124,6 +131,9 @@ function busquedaArray(id){
   console.log(resultado[0])
   arrayCarrito.push(resultado[0])
 }
+
+
+
 
                                                             // CALCULAR TOTAL DEL CARRITO
 

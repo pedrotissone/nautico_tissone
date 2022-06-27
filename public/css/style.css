@@ -11,38 +11,30 @@
   margin: 1%;
   padding: 2%;
   border: solid 1px black;
-  background-color: grey; }
+  background-color: rgba(20, 53, 162, 0.863);
+  border-radius: 0.75rem; }
 
 .main_subtitle {
   text-align: center;
   margin: 1%;
   padding: 2%;
   border: solid 1px black;
-  background-color: grey; }
+  background-color: rgba(20, 53, 162, 0.863);
+  border-radius: 0.75rem; }
 
 section {
   display: flex;
   justify-content: center; }
-
-table {
-  width: 50%; }
-
-tbody {
-  text-align: center; }
-
-th {
-  border: solid 1px black;
-  padding: 10px; }
-
-tr {
-  border: solid 1px black;
-  padding: 10px; }
-
-td {
-  border: solid 1px black;
-  padding: 10px; }
-
-#articulosSeleccionados {
-  text-align: center;
-  text-decoration: underline;
-  margin-top: 3%; }
+  section table {
+    width: 50%; }
+  section tbody {
+    text-align: center; }
+  section th {
+    border: solid 1px black;
+    padding: 10px; }
+  section tr {
+    border: solid 1px black;
+    padding: 10px; }
+  section td {
+    border: solid 1px black;
+    padding: 10px; }
