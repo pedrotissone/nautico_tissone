@@ -13,10 +13,10 @@ class Barcos{
 
 const barco1 = new Barcos(1, "h 20", 1500, 3)
 const barco2 = new Barcos(2, "limbo 21", 2000,2)
-const barco3 = new Barcos(3, "j 24", 3000, 2)
+const barco6 = new Barcos(3, "regge 23", 2000, 1)
 const barco4 = new Barcos(4, "dolphin 23", 3000, 1)
-const barco5 = new Barcos(5, "h 26", 4000, 1)
-const barco6 = new Barcos(6, "regge 23", 2000, 1)
+const barco3 = new Barcos(5, "j 24", 3000, 2)
+const barco5 = new Barcos(6, "h 26", 4000, 1)
 
 
 
@@ -64,10 +64,7 @@ const arrayCarrito = []
 
 // // buscarBarco()
 
-function calcularCarrito(){
- let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
- return console.log("El total es de su alquiler es de $ " + total) 
-}
+
 
 
 
@@ -83,12 +80,29 @@ function listarEquipamiento() {
                       <td>${equip.cantidad}</td>
                       <td><button class="boton  btn btn-primary" id="${equip.id}"> AGREGAR </button></td>
                     </tr>`
-                    document.querySelector("tbody").innerHTML += listado
-                    
-  });
+                    document.querySelector("tbody").innerHTML += listado                                                                               
+  });    
+
 }
 listarEquipamiento()
 
+//                            CAMBIO DE COLOR DEL BOTON EQUIPAMIENTO AL HACER CLICK
+
+let botonColor = document.querySelectorAll(".boton")
+botonColor.forEach(btn =>{
+  btn.addEventListener("click",(b)=>{
+    btn.className = "btn-primary2"
+  })
+})
+//                                                        CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER CLICK
+
+
+let botonColorBarco = document.querySelectorAll(".boton-barcos")
+botonColorBarco.forEach(btn =>{
+  btn.addEventListener("click",(b)=>{
+    btn.className = "btn-primary2"
+  })
+})
 
  
 //                                                        CARGA DE BARCO AL CARRITO
@@ -136,6 +150,12 @@ function busquedaArray(id){
 
 
                                                             // CALCULAR TOTAL DEL CARRITO
+
+function calcularCarrito(){
+ let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+ return console.log("El total es de su alquiler es de $ " + total) 
+}
+                                                            
 
 const botonContinuar = document.getElementById("botonContinuar")
 botonContinuar.addEventListener("click", ()=>{

@@ -22,6 +22,19 @@
   background-color: rgba(20, 53, 162, 0.863);
   border-radius: 0.75rem; }
 
+.btn-primary {
+  color: white;
+  background-color: blue;
+  padding: 6px 12px;
+  border-radius: 0.375rem;
+  border: solid 1px black; }
+
+.btn-primary2 {
+  color: black;
+  background-color: #36ae36;
+  padding: 6px 12px;
+  border-radius: 0.375rem; }
+
 section {
   display: flex;
   justify-content: center; }
