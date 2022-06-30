@@ -86,23 +86,34 @@ function listarEquipamiento() {
 }
 listarEquipamiento()
 
-//                            CAMBIO DE COLOR DEL BOTON EQUIPAMIENTO AL HACER CLICK
+
+//                                                        CAMBIO DE COLOR DEL BOTON EQUIPAMIENTO AL HACER MOUSEDOWN/UP
 
 let botonColor = document.querySelectorAll(".boton")
 botonColor.forEach(btn =>{
-  btn.addEventListener("click",(b)=>{
+  btn.addEventListener("mousedown",(b)=>{
     btn.className = "btn-primary2"
   })
+  btn.addEventListener("mouseup",(b)=>{
+    btn.className = "btn-primary"
+  })
 })
-//                                                        CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER CLICK
+//                                                        CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER MOUSEDOWN/UP
 
 
 let botonColorBarco = document.querySelectorAll(".boton-barcos")
-botonColorBarco.forEach(btn =>{
-  btn.addEventListener("click",(b)=>{
+    botonColorBarco.forEach(btn =>{
+    btn.addEventListener("mousedown",(b)=>{   
     btn.className = "btn-primary2"
+    })
+    btn.addEventListener("mouseup",(b)=>{   
+    btn.className = "btn-primary"
+      })
   })
-})
+
+
+
+
 
  
 //                                                        CARGA DE BARCO AL CARRITO
@@ -119,10 +130,13 @@ botonBarcos.forEach(elm => {
 
 
 function busquedaArrayBarcos(id){
-  let resultado = arrayBarcos.filter(elm => elm.id == id)
-  console.log(resultado[0])
-  arrayCarrito.push(resultado[0])
+    let resultado = arrayBarcos.filter(elm => elm.id == id)
+    console.log(resultado[0])    
+    arrayCarrito.push(resultado[0])
+    renderizarCarritoBarcos(resultado)
 }
+
+
 
 
                                                         // CARGA DE EQUIPAMIENTO AL CARRITO
@@ -144,24 +158,69 @@ function busquedaArray(id){
   let resultado = arrayEquipamiento.filter(elm => elm.id == id)
   console.log(resultado[0])
   arrayCarrito.push(resultado[0])
+  renderizarCarrito(resultado)  
 }
 
+//                                                                          RENDERIZAR EQUIPAMIENTO
 
+const carritoRenderizado = document.getElementById("listadoCarrito")
+
+function renderizarCarrito(obj) {
+  obj.forEach(obj =>{
+    const listado = document.createElement("li")
+    listado.className = "listadoProductos"
+    listado.innerHTML += `<li>${obj.nombre}</li>`
+    carritoRenderizado.appendChild(listado)
+  })  
+}
+//                                                                      RENDERIZAR BARCOS
+
+function renderizarCarritoBarcos(obj) {
+  obj.forEach(obj =>{
+    const listado = document.createElement("li")
+    listado.className = "listadoProductos"
+    listado.innerHTML += `<li>${obj.tipo}</li>`
+    carritoRenderizado.appendChild(listado)
+  })  
+}
 
 
                                                             // CALCULAR TOTAL DEL CARRITO
 
+const totalEnModal = document.getElementById("totalEnModal")
+
 function calcularCarrito(){
  let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
- return console.log("El total es de su alquiler es de $ " + total) 
+ const textoModal = document.createElement("p")
+ textoModal.innerText = "El total de su alquiler es de pesos " + total
+ totalEnModal.appendChild(textoModal)
 }
+
                                                             
+
+const botonConfirmarAlquiler = document.getElementById("botonConfirmarAlquiler")
+  botonConfirmarAlquiler.addEventListener("click", ()=>{
+    guardarCarrito()
+    carritoRenderizado.innerHTML = ""
+    totalEnModal.innerText = ""
+    arrayCarrito.splice(0, arrayCarrito.length)      
+  })
+
+function borrarListado() {
+  carritoRenderizado.innerHTML = ""
+  totalEnModal.innerText = ""
+  
+}  
+
+const botonCancelar = document.getElementById("botonCancelar")
+botonCancelar.addEventListener("click", ()=>{
+   arrayCarrito.splice(0, arrayCarrito.length)
+   borrarListado()
+})
 
 const botonContinuar = document.getElementById("botonContinuar")
 botonContinuar.addEventListener("click", ()=>{
   calcularCarrito()
-  guardarCarrito()
-  
 })
 
 //                                                                LOCALSTORAGE DEL CARRITO CON JSON
@@ -184,21 +243,21 @@ function calcularCarritoAnterior(){
 
 //                                     PREGUNTAR SI DESEA REPETIR EL ULTIMO ALQUILER EFECTUADO CADA VEZ QUE INGRESAS AL SITIO
 
-if (JSON.parse(localStorage.getItem("ultimoCarrito"))){
-  let pregunta = prompt("Desea repetir el alquiler si o no")
-  switch (pregunta.toLowerCase()) {
-    case "si":
-            calcularCarritoAnterior()
-      break;
+// if (JSON.parse(localStorage.getItem("ultimoCarrito"))){
+//   let pregunta = prompt("Desea repetir el alquiler si o no")
+//   switch (pregunta.toLowerCase()) {
+//     case "si":
+//             calcularCarritoAnterior()
+//       break;
   
-    default:
-      console.log("bienvenido al nautico virtual")
-      break;
-  }
+//     default:
+//       console.log("bienvenido al nautico virtual")
+//       break;
+//   }
 
-} else{
-    console.log("bienvenido al nautico virtual")
-}
+// } else{
+//     console.log("bienvenido al nautico virtual")
+// }
 
 
 

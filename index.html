@@ -87,15 +87,43 @@
     </section>
 
  
+
+     <ul id="listadoCarrito"> PRODUCTOS SELECCIONADOS
+
+     </ul>
+ 
     </main>
 
     <footer>
 
-      <div class="container">
-        <div class="row col-6 offset-3">
-          <button type="button" class="btn btn-primary btn-lg m-3" id="botonContinuar">CONTINUAR</button>
-        </div>
+                                <!-- MODAL CONFIRMAR COMPRA -->
+<!-- Button trigger modal -->
+<div class="divBotonContinuar">
+  <button type="button" class="btn btn-primary" id="botonContinuar" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  CONTINUAR
+  </button>
+</div>
+
+<!-- Modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Esta por finalizar su alquiler</h5>
+        <button type="button" class="btn-close" id="botonCerrar" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+      <div class="modal-body" id="totalEnModal">
+        
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" id="botonCancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary" id="botonConfirmarAlquiler" data-bs-dismiss="modal">Confirmar Alquiler</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
     </footer>
 
