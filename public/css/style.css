@@ -6,13 +6,31 @@
   font-family: 'Roboto', sans-serif;
   text-decoration: none; }
 
-#main_title {
-  text-align: center;
+.headerIndex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin: 1%;
-  padding: 2%;
+  padding: 1%;
   border: solid 1px black;
   background-color: rgba(20, 53, 162, 0.863);
-  border-radius: 0.75rem; }
+  border-radius: 0.75rem;
+  width: 100%;
+  height: auto; }
+  .headerIndex #main_title {
+    text-align: center;
+    height: auto;
+    margin: 0%;
+    margin-bottom: 2%;
+    width: 100%; }
+  .headerIndex .divBotonContinuar {
+    margin: 0%;
+    padding: 0%;
+    width: auto; }
+  .headerIndex #botonRepetirAlquiler {
+    margin: 0%;
+    padding: 0.5%;
+    background-color: rgba(176, 18, 18, 0.863); }
 
 .main_subtitle {
   text-align: center;
