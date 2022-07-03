@@ -165,14 +165,29 @@ function calcularCarrito(){
  totalEnModal.appendChild(textoModal)
 }
 
-                                                            
+
+
+function alquilerExitoso() {
+  if(arrayCarrito.length != 0){
+    Swal.fire({
+      icon: "success",
+      title: "Alquiler realizado con éxito",
+    })  
+  } else{
+    Swal.fire({
+      icon: "error",
+      title: "No hay productos seleccionados",
+    })
+  } 
+}                                                            
 
 const botonConfirmarAlquiler = document.getElementById("botonConfirmarAlquiler")
   botonConfirmarAlquiler.addEventListener("click", ()=>{
     guardarCarrito()
+    alquilerExitoso()  
     carritoRenderizado.innerHTML = ""
     totalEnModal.innerText = ""
-    arrayCarrito.splice(0, arrayCarrito.length)      
+    arrayCarrito.splice(0, arrayCarrito.length)
   })
 
 function borrarListado() {
@@ -214,6 +229,7 @@ const botonVerUltimoAlquiler = document.getElementById("botonVerUltimoAlquiler")
 botonVerUltimoAlquiler.addEventListener("click", ()=>{
   renderizarUltimoCarrito(ultimoCarrito)   
 })
+ 
 
 function renderizarUltimoCarrito(obj) {
     obj.forEach(obj =>{
@@ -238,6 +254,7 @@ function renderizarUltimoCarrito(obj) {
     arrayCarrito.splice(0, arrayCarrito.length)
     borrarListado()
   })
+  
   
 
 
