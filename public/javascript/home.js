@@ -227,7 +227,7 @@ let ultimoCarrito = JSON.parse(localStorage.getItem("ultimoCarrito"))
 const botonVerUltimoAlquiler = document.getElementById("botonVerUltimoAlquiler")
 
 botonVerUltimoAlquiler.addEventListener("click", ()=>{
-  renderizarUltimoCarrito(ultimoCarrito)   
+  renderizarUltimoCarrito(ultimoCarrito)
 })
  
 
@@ -241,50 +241,16 @@ function renderizarUltimoCarrito(obj) {
       })
     }
    
-                                                                // BOTONES CERRAR Y CANCELAR EN REPETIR ALQUILER
-    
-  const botonCerrarRepetir = document.getElementById("botonCerrarRepetir")
-  botonCerrarRepetir.addEventListener("click", ()=>{
-    arrayCarrito.splice(0, arrayCarrito.length)
-    borrarListado()
-  })
 
-  const botonCancelarRepetir = document.getElementById("botonCancelarRepetir")
-  botonCancelarRepetir.addEventListener("click", ()=>{
-    arrayCarrito.splice(0, arrayCarrito.length)
-    borrarListado()
-  })
-  
   
 
+//                                     MOSTRAR BOTON DE REPETIR ALQUILER SI ES QUE EXISTE ULTIMO CARRITO EN LOCAL STORAGE
 
-
-
-
-// function calcularCarritoAnterior(){
-//   let total = recuperoCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
-//   return console.log("El total es de su alquiler es de $ " + total) 
-//  }
- 
-
-
-//                                     PREGUNTAR SI DESEA REPETIR EL ULTIMO ALQUILER EFECTUADO CADA VEZ QUE INGRESAS AL SITIO
-
-// if (JSON.parse(localStorage.getItem("ultimoCarrito"))){
-//   let pregunta = prompt("Desea repetir el alquiler si o no")
-//   switch (pregunta.toLowerCase()) {
-//     case "si":
-//             calcularCarritoAnterior()
-//       break;
-  
-//     default:
-//       console.log("bienvenido al nautico virtual")
-//       break;
-//   }
-
-// } else{
-//     console.log("bienvenido al nautico virtual")
-// }
+if (JSON.parse(localStorage.getItem("ultimoCarrito"))){
+  botonVerUltimoAlquiler.className = "btn btn-primary"
+}else{
+  botonVerUltimoAlquiler.className = "ocultar"
+}
 
 
 

@@ -20,19 +20,20 @@
        
     }
 
+    .ocultar{
+        display: none;
+    }
+
+    #botonVerUltimoAlquiler{
+        background-color: rgb(12, 131, 12);
+    }
+
     .divBotonContinuar{    
         margin: 0%;
         padding: 0%;
         width: auto;
     }
-            #botonRepetirAlquiler{
-                    margin: 0%;
-                    padding: 0.5%;
-                    background-color: rgba(176, 18, 18, 0.863);                 
-
-            }
-
-
+           
 }
 
 

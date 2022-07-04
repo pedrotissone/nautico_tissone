@@ -23,14 +23,14 @@
     margin: 0%;
     margin-bottom: 2%;
     width: 100%; }
+  .headerIndex .ocultar {
+    display: none; }
+  .headerIndex #botonVerUltimoAlquiler {
+    background-color: #0c830c; }
   .headerIndex .divBotonContinuar {
     margin: 0%;
     padding: 0%;
     width: auto; }
-  .headerIndex #botonRepetirAlquiler {
-    margin: 0%;
-    padding: 0.5%;
-    background-color: rgba(176, 18, 18, 0.863); }
 
 .main_subtitle {
   text-align: center;
