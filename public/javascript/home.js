@@ -3,11 +3,12 @@
                                                 //C L A S E S
 
 class Barcos{
-    constructor(id, nombre, precio, cantidad){
+    constructor(id, nombre, precio, cantidad, poster){
         this.id = id
         this.nombre = nombre
         this.precio = precio
-        this.cantidad = cantidad   
+        this.cantidad = cantidad
+        this.poster = poster  
     }
 }
 
@@ -51,32 +52,38 @@ const arrayCarrito = []
 //                                                  GENERACION BARCOS DE FORMA DINAMICA A TRAVES DE PETICION FETCH A API SIMULADA
 
             
-const URL = "listadobarcos.json"
+// const URL = "public/javascript/listadobarcos.json"
 
-contenidoDOM = document.getElementById("contenidoDOM")
+// contenidoDOM = document.getElementById("contenidoDOM")
 
-const traerCardsBarcos = ()=>{
-  return `<div class="card col-6" id="h20">
-            <img src="./public/img/h20.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title">H 20</h5>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="#table" class="btn btn-primary boton-barcos" id="1">SELECCIONAR</a>
-              </div>
-          </div>`
-}
+// const traerCardsBarcos = (contenido)=>{
+//   const {poster, nombre, precio, id} = contenido
+//   return `<div class="card col-6" id="h20">
+//             <img src="${poster}" class="card-img-top" alt="...">
+//               <div class="card-body">
+//                 <h5 class="card-title">${nombre}</h5>
+//                 <p class="card-text">PRECIO: $${precio}.</p>
+//                 <a href="#table" class="btn btn-primary boton-barcos" id="${id}">SELECCIONAR</a>
+//               </div>
+//           </div>`
+// }
 
-contenidoDOM.innerHTML = traerCardsBarcos()
 
+// const obtenerContenido = (URL)=> {
+//   let cardsAmostrar = ""
+//   fetch(URL)
+//   .then((response)=> response.json())
+//   .then((data)=>{
+//     // console.log(data)
+//     for (contenido of data) {
+//       cardsAmostrar += traerCardsBarcos(contenido)
+//     }
+//     contenidoDOM.innerHTML = cardsAmostrar
+//   })
 
-const obtenerContenido = (URL)=> {
-  fetch(URL)
-  .then((response)=> response.json())
-  .then((data)=>{
-    console.table(data)
-  })
+// }
 
-}
+// obtenerContenido(URL)
 
 
 
@@ -135,7 +142,7 @@ const botonBarcos = document.querySelectorAll(".boton-barcos")
 
 botonBarcos.forEach(elm => {
   elm.addEventListener("click", (e) => {
-    let resultado = e.target.id    
+    let resultado = e.target.id   
     busquedaArrayBarcos(resultado)
   
   })
