@@ -1,5 +1,53 @@
 
 
+
+const URL = "public/javascript/listadobarcos.json"
+
+contenidoDOM = document.getElementById("contenidoDOM")
+
+const traerCardsBarcos = (contenido)=>{
+  const {poster, nombre, precio, id} = contenido
+  return `<div class="card col-6" id="h20">
+            <img src="${poster}" class="card-img-top" alt="...">
+              <div class="card-body">
+                <h5 class="card-title">${nombre}</h5>
+                <p class="card-text">PRECIO: $${precio}.</p>
+                <a href="#table" class="btn btn-primary boton-barcos" id="${id}">SELECCIONAR</a>
+              </div>
+          </div>`
+}
+
+
+ 
+
+
+const obtenerContenido = (URL)=> {
+  let cardsAmostrar = ""
+  fetch(URL)
+  .then((response)=> response.json())
+  .then((data)=>{
+    for (contenido of data) {
+      cardsAmostrar += traerCardsBarcos(contenido)
+    }
+    contenidoDOM.innerHTML = cardsAmostrar
+  })
+
+}
+
+obtenerContenido(URL)
+
+                  // ACA LOGRO LA FUNCIONALIDAD DE LA CLASE BOTON-BARCO QUE HABIA DEJADO DE FUNCIONAR AL TRAER LOS OBJETOS JSON A TRES DE FETCH
+
+
+document.addEventListener("click", (e)=>{
+  if(e.target.classList.contains("boton-barcos")){
+    busquedaArrayBarcos(e.target.id)
+  }
+
+})
+
+
+
                                                 //C L A S E S
 
 class Barcos{
@@ -52,38 +100,9 @@ const arrayCarrito = []
 //                                                  GENERACION BARCOS DE FORMA DINAMICA A TRAVES DE PETICION FETCH A API SIMULADA
 
             
-// const URL = "public/javascript/listadobarcos.json"
-
-// contenidoDOM = document.getElementById("contenidoDOM")
-
-// const traerCardsBarcos = (contenido)=>{
-//   const {poster, nombre, precio, id} = contenido
-//   return `<div class="card col-6" id="h20">
-//             <img src="${poster}" class="card-img-top" alt="...">
-//               <div class="card-body">
-//                 <h5 class="card-title">${nombre}</h5>
-//                 <p class="card-text">PRECIO: $${precio}.</p>
-//                 <a href="#table" class="btn btn-primary boton-barcos" id="${id}">SELECCIONAR</a>
-//               </div>
-//           </div>`
-// }
 
 
-// const obtenerContenido = (URL)=> {
-//   let cardsAmostrar = ""
-//   fetch(URL)
-//   .then((response)=> response.json())
-//   .then((data)=>{
-//     // console.log(data)
-//     for (contenido of data) {
-//       cardsAmostrar += traerCardsBarcos(contenido)
-//     }
-//     contenidoDOM.innerHTML = cardsAmostrar
-//   })
 
-// }
-
-// obtenerContenido(URL)
 
 
 
@@ -118,35 +137,37 @@ botonColor.forEach(btn =>{
     btn.className = "btn-primary"
   })
 })
-//                                                        CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER MOUSEDOWN/UP
+//                       CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER MOUSEDOWN/UP (DEJO DE FUNCIONAR DESPUES DE USAR EL FETCH)
 
 
-let botonColorBarco = document.querySelectorAll(".boton-barcos")
-    botonColorBarco.forEach(btn =>{
-    btn.addEventListener("mousedown",(b)=>{   
-    btn.className = "btn-primary2"
-    })
-    btn.addEventListener("mouseup",(b)=>{   
-    btn.className = "btn-primary"
-      })
-  })
+// let botonColorBarco = document.querySelectorAll(".boton-barcos")
+//     botonColorBarco.forEach(btn =>{
+//     btn.addEventListener("mousedown",(b)=>{   
+//     btn.className = "btn-primary2"
+//     })
+//     btn.addEventListener("mouseup",(b)=>{   
+//     btn.className = "btn-primary"
+//       })
+//   })
+
+
 
 
 
 
 
  
-//                                                        CARGA DE BARCO AL CARRITO
+//                                       CARGA DE BARCO AL CARRITO (DEJO DE FUNCIONAR DESPUES DE USAR EL FETCH)
 
-const botonBarcos = document.querySelectorAll(".boton-barcos")
+// const botonBarcos = document.querySelectorAll(".boton-barcos")
 
-botonBarcos.forEach(elm => {
-  elm.addEventListener("click", (e) => {
-    let resultado = e.target.id   
-    busquedaArrayBarcos(resultado)
+// botonBarcos.forEach(elm => {
+//   elm.addEventListener("click", (e) => {
+//     let resultado = e.target.id   
+//     busquedaArrayBarcos(resultado)
   
-  })
-})
+//   })
+// })
 
 
 function busquedaArrayBarcos(id){
@@ -254,7 +275,7 @@ botonContinuar.addEventListener("click", ()=>{
 
 //                                                                LOCALSTORAGE DEL CARRITO CON JSON
 
-function guardarCarrito(){  
+function guardarCarrito(){
   const  ultimoCarrito = JSON.stringify(arrayCarrito)
   localStorage.setItem("ultimoCarrito", ultimoCarrito)
 
