@@ -54,7 +54,6 @@
   border-radius: 0.375rem;
   border: solid 1px black; }
 
-
 section {
   display: flex;
   justify-content: center; }
@@ -81,6 +80,8 @@ section {
   width: auto; }
 
 .listadoProductos {
+  display: flex;
+  justify-content: center;
   border: solid 1px black;
   width: 50%;
   height: auto;
@@ -88,6 +89,8 @@ section {
   font-size: large;
   padding: 1rem;
   background-color: #36ae36; }
+  .listadoProductos .btn-danger {
+    margin-left: auto; }
 
 .divBotonContinuar {
   display: flex;

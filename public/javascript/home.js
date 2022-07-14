@@ -1,5 +1,5 @@
 
-
+                                              // PETICION DE DATOS A TRAVES DE FETCH A UNA API REMOTA SIMULADA
 
 const URL = "public/javascript/listadobarcos.json"
 
@@ -95,13 +95,7 @@ const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
 const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
 
-const arrayCarrito = []
-
-//                                                  GENERACION BARCOS DE FORMA DINAMICA A TRAVES DE PETICION FETCH A API SIMULADA
-
-            
-
-
+const arrayCarrito = []      
 
 
 
@@ -208,10 +202,33 @@ function renderizarCarrito(obj) {
   obj.forEach(obj =>{
     const listado = document.createElement("li")
     listado.className = "listadoProductos"
-    listado.innerHTML += `<li>${obj.nombre}</li>`
+    listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
     carritoRenderizado.appendChild(listado)
-  })  
+  })
+  
 }
+
+
+//                                                              ELIMINAR PRODUCTOS SELECCIONADOS DEL LISTADO
+
+
+const botonEliminar = document.getElementsByClassName("btn-danger")
+
+document.addEventListener("click", (e)=>{
+  if(e.target.classList.contains("btn-danger")){
+    busquedaArrayEliminar(e.target.id)
+  }
+
+
+})
+function busquedaArrayEliminar(id){
+  let resultado = arrayCarrito.findIndex(elm => elm.id == id)
+  arrayCarrito.splice(resultado, 1)
+  carritoRenderizado.removeChild(carritoRenderizado.children[resultado])  
+}
+
+
+
 
 
                                                             // CALCULAR TOTAL DEL CARRITO Y MANEJO DE BOTONES CANCELAR Y CERRAR

@@ -105,13 +105,21 @@ section {
 }
 
 .listadoProductos{
+    display: flex;
+    justify-content: center;
     border: solid 1px black;
     width: 50%;
     height: auto;
     text-align: center;
     font-size: large;
     padding: 1rem;
-    background-color: rgb(54, 174, 54);   
+    background-color: rgb(54, 174, 54);
+
+    .btn-danger{
+        margin-left: auto;
+
+    }
+  
 }
 
 .divBotonContinuar{
