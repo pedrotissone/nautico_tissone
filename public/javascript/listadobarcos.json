@@ -1,41 +1,41 @@
 [
     {
         "id":1,
-        "nombre":"h 20",
+        "nombre":"H 20",
         "precio":1500,
         "cantidad":3,
         "poster": "./public/img/h20.png"
     },
     {
         "id":2,
-        "nombre":"limbo 21",
+        "nombre":"LIMBO 21",
         "precio":2000,
         "cantidad":2,
         "poster": "./public/img/limbo21.png"
     },
     {
         "id":3,
-        "nombre":"regge 23",
+        "nombre":"REGGE 23",
         "precio":2000,
         "cantidad":1,
         "poster": "./public/img/regge23.png"
     },
     {   "id":4,
-        "nombre":"dolphin 23",
+        "nombre":"DOLPHIN 23",
         "precio":3000,
         "cantidad":1,
         "poster": "./public/img/dolphin23.png"
     },
     {
         "id":5,
-        "nombre":"j 24",
+        "nombre":"J 24",
         "precio":3000,
         "cantidad":2,
         "poster": "./public/img/j24.png"
     },
     {
         "id":6,
-        "nombre":"h 26",
+        "nombre":"H 26",
         "precio":4000,
         "cantidad":1,
         "poster": "./public/img/h26.png"

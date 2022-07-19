@@ -7,7 +7,7 @@ contenidoDOM = document.getElementById("contenidoDOM")
 
 const traerCardsBarcos = (contenido)=>{
   const {poster, nombre, precio, id} = contenido
-  return `<div class="card col-6" id="h20">
+  return `<div class="card col-6">
             <img src="${poster}" class="card-img-top" alt="...">
               <div class="card-body">
                 <h5 class="card-title">${nombre}</h5>
@@ -60,12 +60,12 @@ class Barcos{
     }
 }
 
-const barco1 = new Barcos(1, "h 20", 1500, 3)
-const barco2 = new Barcos(2, "limbo 21", 2000,2)
-const barco6 = new Barcos(3, "regge 23", 2000, 1)
-const barco4 = new Barcos(4, "dolphin 23", 3000, 1)
-const barco3 = new Barcos(5, "j 24", 3000, 2)
-const barco5 = new Barcos(6, "h 26", 4000, 1)
+const barco1 = new Barcos(1, "H 20", 1500, 3)
+const barco2 = new Barcos(2, "LIMBO 21", 2000,2)
+const barco6 = new Barcos(3, "REGGE 23", 2000, 1)
+const barco4 = new Barcos(4, "DOLPHIN 23", 3000, 1)
+const barco3 = new Barcos(5, "J 24", 3000, 2)
+const barco5 = new Barcos(6, "H 26", 4000, 1)
 
 
 
@@ -80,12 +80,12 @@ class Equipamiento{
     }
 }
 
-const equipamiento1 = new Equipamiento(50, "gps garmin", 1000, 3)
-const equipamiento2 = new Equipamiento(51, "prismatico", 2000, 2)
-const equipamiento3 = new Equipamiento(52, "pinula", 500, 3)
-const equipamiento4 = new Equipamiento(53,  "carta nautica", 500, 5)
-const equipamiento5 = new Equipamiento(54,"sextante", 2000, 1)
-const equipamiento6 = new Equipamiento(55, "bichero", 500, 3)
+const equipamiento1 = new Equipamiento(50, "GPS Garmin", 1000, 3)
+const equipamiento2 = new Equipamiento(51, "Prismatico", 2000, 2)
+const equipamiento3 = new Equipamiento(52, "Pinula", 500, 3)
+const equipamiento4 = new Equipamiento(53,  "Carta Nautica", 500, 5)
+const equipamiento5 = new Equipamiento(54,"Sextante", 2000, 1)
+const equipamiento6 = new Equipamiento(55, "Bichero", 500, 3)
 
 
 //                                              A R R A Y S
@@ -109,7 +109,7 @@ function listarEquipamiento() {
     const listado = `<tr>
                       <td>${equip.id}</td>
                       <td>${equip.nombre}</td>
-                      <td>${equip.precio}</td>
+                      <td>${equip.precio }</td>
                       <td>${equip.cantidad}</td>
                       <td><button class="boton  btn btn-primary" id="${equip.id}"> AGREGAR </button></td>
                     </tr>`
@@ -165,6 +165,7 @@ botonColor.forEach(btn =>{
 
 
 function busquedaArrayBarcos(id){
+  debugger
     let resultado = arrayBarcos.filter(elm => elm.id == id)
     console.log(resultado[0])    
     arrayCarrito.push(resultado[0])
@@ -312,7 +313,7 @@ function renderizarUltimoCarrito(obj) {
     obj.forEach(obj =>{
         const listado = document.createElement("li")
         listado.className = "listadoProductos"
-        listado.innerHTML += `<li>${obj.nombre}</li>`
+        listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
         carritoRenderizado.appendChild(listado)
         arrayCarrito.push(obj)
       })
