@@ -131,46 +131,28 @@ botonColor.forEach(btn =>{
     btn.className = "btn-primary"
   })
 })
-//                       CAMBIO DE COLOR DEL BOTON DE LOS BARCOS AL HACER MOUSEDOWN/UP (DEJO DE FUNCIONAR DESPUES DE USAR EL FETCH)
-
-
-// let botonColorBarco = document.querySelectorAll(".boton-barcos")
-//     botonColorBarco.forEach(btn =>{
-//     btn.addEventListener("mousedown",(b)=>{   
-//     btn.className = "btn-primary2"
-//     })
-//     btn.addEventListener("mouseup",(b)=>{   
-//     btn.className = "btn-primary"
-//       })
-//   })
-
-
-
-
-
-
 
  
-//                                       CARGA DE BARCO AL CARRITO (DEJO DE FUNCIONAR DESPUES DE USAR EL FETCH)
+//                                       BLOQUEO DE LOS DEMAS BOTONES A TRAVES DE LA VARIABLE TRUEFALSE (POR DEFECTO TRUE!!!)
 
-// const botonBarcos = document.querySelectorAll(".boton-barcos")
 
-// botonBarcos.forEach(elm => {
-//   elm.addEventListener("click", (e) => {
-//     let resultado = e.target.id   
-//     busquedaArrayBarcos(resultado)
-  
-//   })
-// })
 
+let trueFalse = true
 
 function busquedaArrayBarcos(id){
-  debugger
+    if (trueFalse == false) {
+      Swal.fire({
+        icon: "warning",
+        title: "Solo puede seleccionar un barco por alquiler",
+      })      
+    } else {      
+
     let resultado = arrayBarcos.filter(elm => elm.id == id)
     console.log(resultado[0])    
     arrayCarrito.push(resultado[0])
     renderizarCarrito(resultado)
-}
+    return trueFalse = false
+}}
 
 
 
@@ -195,7 +177,7 @@ function busquedaArray(id){
   renderizarCarrito(resultado)  
 }
 
-//                                                                          RENDERIZAR TODOS LOS PRODUCTOS SELECCIONADOS
+//                                             RENDERIZAR TODOS LOS PRODUCTOS SELECCIONADOS (AL BOTON DE ELIMINAR LE PONGO EL MISMO ID QUE AL PRODUCTO)
 
 const carritoRenderizado = document.getElementById("listadoCarrito")
 
@@ -217,16 +199,28 @@ const botonEliminar = document.getElementsByClassName("btn-danger")
 
 document.addEventListener("click", (e)=>{
   if(e.target.classList.contains("btn-danger")){
-    busquedaArrayEliminar(e.target.id)
-  }
-
+    busquedaArrayEliminar(e.target.id) }
 
 })
-function busquedaArrayEliminar(id){
-  let resultado = arrayCarrito.findIndex(elm => elm.id == id)
-  arrayCarrito.splice(resultado, 1)
-  carritoRenderizado.removeChild(carritoRenderizado.children[resultado])  
+
+//                                          UTILIZO FUNCION TRUEFALSEBARCOS() PARA NO PERMITIR ALQUILAR MAS DE UN BARCO A LA VEZ
+
+function trueFalseBarcos(id) {
+  let comprobacionID = arrayBarcos.find(elm => elm.id == id)
+  if (comprobacionID == undefined) {
+    
+  } else {
+    return trueFalse = true
+  }  
 }
+
+
+function busquedaArrayEliminar(id){
+  let resultado = arrayCarrito.findIndex(elm => elm.id == id) 
+    arrayCarrito.splice(resultado, 1)
+    carritoRenderizado.removeChild(carritoRenderizado.children[resultado])
+    trueFalseBarcos(id)
+  }
 
 
 
@@ -243,7 +237,7 @@ function calcularCarrito(){
  totalEnModal.appendChild(textoModal)
 }
 
-
+//                                                  A ESTA FUNCION LE QUEDO DE MÁS EL ELSE
 
 function alquilerExitoso() {
   if(arrayCarrito.length != 0){
@@ -257,15 +251,27 @@ function alquilerExitoso() {
       title: "No hay productos seleccionados",
     })
   } 
-}                                                            
+}
+
+//                                      AGREGO UN IF PARA QUE NO ME GUARDE UN CARRITO VACIO EN EL LOCALSTORAGE
 
 const botonConfirmarAlquiler = document.getElementById("botonConfirmarAlquiler")
   botonConfirmarAlquiler.addEventListener("click", ()=>{
-    guardarCarrito()
-    alquilerExitoso()  
-    carritoRenderizado.innerHTML = ""
-    totalEnModal.innerText = ""
-    arrayCarrito.splice(0, arrayCarrito.length)
+    if (arrayCarrito.length != 0) {
+      guardarCarrito()
+      alquilerExitoso()  
+      carritoRenderizado.innerHTML = ""
+      totalEnModal.innerText = ""
+      arrayCarrito.splice(0, arrayCarrito.length)
+      return trueFalse = true
+    } else {
+      totalEnModal.innerText = ""
+      Swal.fire({
+        icon: "error",
+        title: "No hay productos seleccionados",
+      })
+    }
+   
   })
 
 function borrarListado() {
@@ -278,12 +284,14 @@ const botonCancelar = document.getElementById("botonCancelar")
 botonCancelar.addEventListener("click", ()=>{
    arrayCarrito.splice(0, arrayCarrito.length)
    borrarListado()
+   return trueFalse = true
 })
 
 const botonCerrar = document.getElementById("botonCerrar")
 botonCerrar.addEventListener("click", ()=>{
   arrayCarrito.splice(0, arrayCarrito.length)
   borrarListado()
+  return trueFalse = true
 })
 
 const botonContinuar = document.getElementById("botonContinuar")
@@ -298,27 +306,51 @@ function guardarCarrito(){
   localStorage.setItem("ultimoCarrito", ultimoCarrito)
 
 }
+
                                                                     // RECUPERAR Y RENDERIZAR ULTIMO CARRITO
 
 let ultimoCarrito = JSON.parse(localStorage.getItem("ultimoCarrito"))
 
 const botonVerUltimoAlquiler = document.getElementById("botonVerUltimoAlquiler")
 
+
+
+//                                                  NO PODES TRAER EL ULTIMO CARRITO SI YA TENES PRODUCTOS SELECCIONADOS EN EL CARRITO
+
 botonVerUltimoAlquiler.addEventListener("click", ()=>{
-  renderizarUltimoCarrito(ultimoCarrito)
+  if (arrayCarrito.length != 0) {
+    Swal.fire({
+      icon: "warning",
+      title: "Ya tiene productos seleccionados en el carrito",
+    })
+  } else {
+    renderizarUltimoCarrito(ultimoCarrito)
+  }  
 })
+
+
  
+//                       LE AGREGO UN IF PARA BLOQUEAR BOTON DE ALQUILER BARCOS SI ES QUE YA EXISTE UNO EN EL CARRITO
 
 function renderizarUltimoCarrito(obj) {
     obj.forEach(obj =>{
+      if (obj.id > 6) {
         const listado = document.createElement("li")
         listado.className = "listadoProductos"
         listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
         carritoRenderizado.appendChild(listado)
-        arrayCarrito.push(obj)
+        arrayCarrito.push(obj) 
+        
+      } else {
+        const listado = document.createElement("li")
+        listado.className = "listadoProductos"
+        listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
+        carritoRenderizado.appendChild(listado)
+        arrayCarrito.push(obj)  
+        return trueFalse = false
+      }              
       })
     }
-   
 
   
 
