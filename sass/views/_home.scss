@@ -13,7 +13,8 @@
     border-radius: 0.75rem;
     width: 100%;
     height: 38vh;
-    background-image: url("./public/img/atardecer_rio_de_la_plata.svg");
+    background-image: url("../../public/img/atardecer_rio_de_la_plata.svg");
+   
 
     #main_title{
         text-align: center;
@@ -48,7 +49,7 @@
 }
 
 .card-title{     
-    font-size: 25px;
+    font-size: 1.5rem;
     font-weight: bolder;
     text-decoration: underline;
 }
@@ -72,7 +73,7 @@
 .btn-primary{
     color: white;
     background-color: #64502d;
-    padding: 6px 12px;
+    padding: 1.5%;
     border-radius: 0.375rem;
     border: solid 1px $color-bordes;
 
@@ -86,14 +87,10 @@
 .btn-primary2{
     color: black;
     background-color: rgb(71, 12, 12);
-    padding: 6px 12px;
+    padding: 1.5%;
     border-radius: 0.375rem;
     border: solid 1px rgb(71, 12, 12);
 }
-
-// .anularBotones{
-
-// }
 
 
 section {
@@ -114,18 +111,18 @@ section {
 
     th {
         border: solid 2px $color-bordes;
-        padding: 10px;
+        padding: 0.5rem;
 
     }
 
     tr {
         border: solid 2px $color-bordes;
-        padding: 10px;
+        padding: 0.5rem;
     }
 
     td {
         border: solid 2px $color-bordes;
-        padding: 10px;
+        padding: 0.5rem;
     }
 }
 #listadoCarrito{
@@ -166,5 +163,32 @@ section {
 
 #botonContinuar{
     width: 100%;
-    height: 50px;
+    height: 3rem;
 }
+
+//                              MEDIA QUERIES
+
+@media screen and (max-width: 450px){
+
+    html{
+        font-size: 75%;
+    }
+
+    .headerIndex{
+        height: 30vh;
+    }
+
+    ul{
+        text-align: center;
+    }
+
+    .listadoProductos{
+        width: 100%;
+    }
+
+}
+
+
+
+
+
