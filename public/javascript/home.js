@@ -231,20 +231,28 @@ function busquedaArrayEliminar(id){
 const totalEnModal = document.getElementById("totalEnModal")
 
 function calcularCarrito(){
- let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+ let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0) 
  const textoModal = document.createElement("p")
- textoModal.innerText = "El total de su alquiler es de pesos " + total
+ textoModal.innerText = "El total de su alquiler es de pesos " + total 
  totalEnModal.appendChild(textoModal)
+
 }
 
-//                                                  A ESTA FUNCION LE QUEDO DE MÁS EL ELSE
+//                      FUNCION PARA REDIRIGIR AL CALENDARIO AL CONFIRMAR ALQUILER.
+
+function redirigirACalendario(){
+  window.location.href = `public/views/calendario.html`
+}    
+
+//                                                 A ESTA FUNCION LE QUEDO DE MÁS EL ELSE
 
 function alquilerExitoso() {
   if(arrayCarrito.length != 0){
     Swal.fire({
       icon: "success",
-      title: "Alquiler realizado con éxito",
-    })  
+      title: "Alquiler realizado con éxito",      
+    })
+    redirigirACalendario()
   } else{
     Swal.fire({
       icon: "error",

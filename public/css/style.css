@@ -123,7 +123,7 @@ section {
   flex-direction: row;
   justify-content: center;
   margin-top: 3%;
-  width: auto; }
+  width: 100%; }
 
 #botonContinuar {
   width: 100%;
@@ -138,3 +138,64 @@ section {
     text-align: center; }
   .listadoProductos {
     width: 100%; } }
+
+.header__title {
+  margin-bottom: 3rem;
+  padding: 0.5rem;
+  text-align: center;
+  border: solid 1px black;
+  background-color: rgba(107, 107, 218, 0.811);
+  color: whitesmoke; }
+
+.calendar {
+  background-color: lightgreen;
+  width: 40rem;
+  margin: auto;
+  border: solid 1.5px black; }
+  .calendar__info {
+    display: flex;
+    align-items: center;
+    padding: 0 1rem; }
+    .calendar__info .calendar__prev {
+      margin-right: auto;
+      cursor: pointer;
+      padding: 0.3rem; }
+    .calendar__info .calendar__next {
+      margin-left: auto;
+      cursor: pointer;
+      padding: 0.3rem; }
+    .calendar__info .calendar__month {
+      padding: 0.3rem;
+      text-transform: uppercase;
+      font-weight: bolder; }
+    .calendar__info .calendar__year {
+      padding: 0.3rem;
+      font-weight: bolder; }
+  .calendar__week, .calendar__dates {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr); }
+  .calendar .calendar__item {
+    display: flex;
+    justify-content: center;
+    line-height: 2;
+    font-weight: bolder; }
+  .calendar .calendar__today {
+    background-color: rgba(107, 107, 218, 0.811);
+    color: whitesmoke;
+    width: 50%;
+    margin: auto;
+    border-radius: 50%; }
+  .calendar .calendar__lastDays {
+    color: #f30a0a; }
+  .calendar .diaSeleccionable {
+    cursor: pointer; }
+  .calendar .diaSeleccionable:hover {
+    background-color: whitesmoke;
+    border: solid 1px blueviolet; }
+  .calendar .diaOcupado {
+    display: flex;
+    justify-content: center;
+    line-height: 2;
+    font-weight: bolder;
+    color: gray;
+    cursor: pointer; }

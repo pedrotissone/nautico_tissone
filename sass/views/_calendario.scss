@@ -1,0 +1,89 @@
+
+.header__title{
+    margin-bottom: 3rem;
+    padding: 0.5rem;
+    text-align: center;
+    border: solid 1px black;
+    background-color: rgba(107, 107, 218, 0.811);
+    color: whitesmoke;
+}
+
+
+.calendar {
+    background-color: lightgreen;
+    width: 40rem;
+    margin: auto;
+    border: solid 1.5px black;
+
+    &__info{
+        display: flex;
+        align-items: center;
+        padding: 0 1rem;
+
+        .calendar__prev{
+            margin-right: auto;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .calendar__next{
+            margin-left: auto;
+            cursor: pointer;
+            padding: 0.3rem;
+        }
+
+        .calendar__month{            
+            padding: 0.3rem;
+            text-transform: uppercase;
+            font-weight: bolder; 
+        }
+
+        .calendar__year{            
+            padding: 0.3rem;
+            font-weight: bolder; 
+        }        
+    }
+
+    &__week, &__dates {
+        display: grid;
+        grid-template-columns: repeat(7, 1fr);       
+    }
+
+    .calendar__item{
+        display: flex;
+        justify-content: center;
+        line-height: 2;
+        font-weight: bolder;          
+    }
+
+    .calendar__today{
+        background-color: rgba(107, 107, 218, 0.811);
+        color: whitesmoke;       
+        width: 50%;
+        margin: auto;
+        border-radius: 50%;     
+
+    }
+
+    .calendar__lastDays{
+        color: rgb(243, 10, 10);
+    }
+
+    .diaSeleccionable {
+        cursor: pointer;
+    }
+    .diaSeleccionable:hover{
+        background-color: whitesmoke;
+        border: solid 1px blueviolet;
+    }
+
+    .diaOcupado{
+        display: flex;
+        justify-content: center;
+        line-height: 2;
+        font-weight: bolder;
+        color: gray;
+        cursor: pointer;       
+    }
+   
+}
