@@ -1,4 +1,5 @@
 
+
                                               // PETICION DE DATOS A TRAVES DE FETCH A UNA API REMOTA SIMULADA
 
 const URL = "public/javascript/listadobarcos.json"
@@ -95,7 +96,8 @@ const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
 const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
 
-const arrayCarrito = []      
+let arrayCarrito = []
+
 
 
 
@@ -226,16 +228,26 @@ function busquedaArrayEliminar(id){
 
 
 
-                                                            // CALCULAR TOTAL DEL CARRITO Y MANEJO DE BOTONES CANCELAR Y CERRAR
+                                                            // CALCULAR TOTAL DEL CARRITO y RENDERIZAR PRODUCTOS EN MODAL
 
 const totalEnModal = document.getElementById("totalEnModal")
+
+function renderizarProductosEnModal() {
+  arrayCarrito.forEach(elm =>{
+    let textoModalProductos = document.createElement("p")
+    textoModalProductos.className = "productosModal"
+    textoModalProductos.innerText = `${elm.nombre}: $${elm.precio}`
+    totalEnModal.append(textoModalProductos)
+  })
+}
 
 function calcularCarrito(){
  let total = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0) 
  const textoModal = document.createElement("p")
- textoModal.innerText = "El total de su alquiler es de pesos " + total 
+ textoModal.className = "valorTotal"
+ textoModal.innerText = "TOTAL: $" + total 
  totalEnModal.appendChild(textoModal)
-
+ 
 }
 
 //                      FUNCION PARA REDIRIGIR AL CALENDARIO AL CONFIRMAR ALQUILER.
@@ -304,6 +316,7 @@ botonCerrar.addEventListener("click", ()=>{
 
 const botonContinuar = document.getElementById("botonContinuar")
 botonContinuar.addEventListener("click", ()=>{
+  renderizarProductosEnModal()
   calcularCarrito()
 })
 
