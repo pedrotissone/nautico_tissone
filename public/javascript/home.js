@@ -320,11 +320,13 @@ botonContinuar.addEventListener("click", ()=>{
   calcularCarrito()
 })
 
-//                                                                LOCALSTORAGE DEL CARRITO CON JSON
+//                              GUARDO EN EL LOCALSTORAGE LOS PRODUCTOS SELECCIONADOS Y EL PRECIO TOTAL DEL ALQUILER
 
 function guardarCarrito(){
   const  ultimoCarrito = JSON.stringify(arrayCarrito)
   localStorage.setItem("ultimoCarrito", ultimoCarrito)
+  let precioFinal = arrayCarrito.reduce((acc, elemento) => acc + elemento.precio, 0)
+  localStorage.setItem("precioFinal", precioFinal)
 
 }
 

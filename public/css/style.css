@@ -154,63 +154,111 @@ section {
   .listadoProductos {
     width: 100%; } }
 
-.header__title {
-  margin-bottom: 3rem;
-  padding: 0.5rem;
-  text-align: center;
-  border: solid 1px black;
-  background-color: rgba(107, 107, 218, 0.811);
-  color: whitesmoke; }
+body {
+  background-color: #81b5c638; }
 
-.calendar {
-  background-color: lightgreen;
-  width: 40rem;
-  margin: auto;
-  border: solid 1.5px black; }
-  .calendar__info {
-    display: flex;
-    align-items: center;
-    padding: 0 1rem; }
-    .calendar__info .calendar__prev {
-      margin-right: auto;
-      cursor: pointer;
-      padding: 0.3rem; }
-    .calendar__info .calendar__next {
-      margin-left: auto;
-      cursor: pointer;
-      padding: 0.3rem; }
-    .calendar__info .calendar__month {
-      padding: 0.3rem;
-      text-transform: uppercase;
-      font-weight: bolder; }
-    .calendar__info .calendar__year {
-      padding: 0.3rem;
-      font-weight: bolder; }
-  .calendar__week, .calendar__dates {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); }
-  .calendar .calendar__item {
-    display: flex;
-    justify-content: center;
-    line-height: 2;
-    font-weight: bolder; }
-  .calendar .calendar__today {
-    background-color: rgba(107, 107, 218, 0.811);
-    color: whitesmoke;
-    width: 50%;
+header {
+  display: flex;
+  justify-content: center;
+  padding: 1rem;
+  align-items: flex-end; }
+
+.header__title {
+  text-align: center;
+  color: #807d8b;
+  margin-left: 1rem;
+  margin-right: 1rem; }
+
+.main__calendario {
+  height: 100vh;
+  background-image: url(../../public/img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  margin-bottom: 2rem; }
+  .main__calendario .calendar {
+    background-color: #d9af7bc9;
+    width: 60%;
     margin: auto;
-    border-radius: 50%; }
-  .calendar .calendar__lastDays {
-    color: #f30a0a; }
-  .calendar .diaSeleccionable {
-    cursor: pointer; }
-  .calendar .diaSeleccionable:hover {
-    background-color: whitesmoke;
-    border: solid 1px blueviolet; }
-  .calendar .diaOcupado {
+    border: solid 1.5px black; }
+    .main__calendario .calendar__info {
+      display: flex;
+      align-items: center;
+      background-color: #6c242445; }
+      .main__calendario .calendar__info .calendar__prev {
+        margin-right: auto;
+        cursor: pointer;
+        padding: 0.5rem; }
+      .main__calendario .calendar__info .calendar__prev:hover {
+        background-color: #c7bdbd; }
+      .main__calendario .calendar__info .calendar__next {
+        margin-left: auto;
+        cursor: pointer;
+        padding: 0.5rem; }
+      .main__calendario .calendar__info .calendar__next:hover {
+        background-color: #c7bdbd; }
+      .main__calendario .calendar__info .calendar__month {
+        padding: 0.3rem;
+        text-transform: uppercase;
+        font-weight: bolder; }
+      .main__calendario .calendar__info .calendar__year {
+        padding: 0.3rem;
+        font-weight: bolder; }
+    .main__calendario .calendar__week, .main__calendario .calendar__dates {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      margin: 0.2rem; }
+    .main__calendario .calendar .calendar__day {
+      text-decoration: underline; }
+    .main__calendario .calendar .calendar__item {
+      display: flex;
+      justify-content: center;
+      line-height: 2;
+      font-weight: bolder; }
+    .main__calendario .calendar .calendar__today {
+      background-color: #0d79aa;
+      width: 50%;
+      margin: auto;
+      border-radius: 50%; }
+    .main__calendario .calendar .calendar__lastDays {
+      color: #fb0000; }
+    .main__calendario .calendar .diaSeleccionable {
+      cursor: pointer; }
+    .main__calendario .calendar .diaSeleccionable:hover {
+      background-color: #91b7e4c9;
+      border: solid 1.5px #6c242445;
+      margin: auto;
+      width: 50%; }
+    .main__calendario .calendar .diaOcupado {
+      display: flex;
+      justify-content: center;
+      line-height: 2;
+      font-weight: bolder;
+      color: gray;
+      cursor: pointer; }
+
+footer {
+  background: linear-gradient(45deg, #095579 35%, #28a2bb 100%, #160024 100%); }
+  footer .footer__top {
+    text-align: center;
+    color: aliceblue;
+    padding: 0.5rem;
+    font-size: larger; }
+  footer .patrocinadores {
     display: flex;
-    justify-content: center;
-    line-height: 2;
-    font-weight: bolder;
-    color: gray;
-    cursor: pointer; }
+    justify-content: space-evenly;
+    padding: 1.5rem;
+    background-color: #ffffff75; }
+    footer .patrocinadores img {
+      width: 13%;
+      border-radius: 50%; }
+  footer .contacto {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 1rem;
+    padding: 1rem; }
+  footer .copyright {
+    border-top: solid 1px cornsilk;
+    text-align: center;
+    padding: 1.5rem;
+    color: aliceblue; }

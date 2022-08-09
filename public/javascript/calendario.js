@@ -1,6 +1,4 @@
 
-
-
 //                                  ARRAYS PARA TRABAJAR EL CALENDARIO
 
 const monthNames = ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]
@@ -130,9 +128,16 @@ function setNewDate() {
     diaElegido.forEach(elm => {
         elm.addEventListener("click", (e) => {
           if(trueOfalse == false){
-              alert("No puede seleccionar más de un día de alquiler")
+            //   alert("No puede seleccionar más de un día de alquiler")
+            Swal.fire({
+                icon: "warning",
+                title: "No puede seleccionar más de un día de alquiler",      
+              })
           } else if(elm.className == "diaOcupado"){
-              alert("el dia esta ocupado")
+              Swal.fire({
+                icon: "warning",
+                title: "El día está ocupado",      
+              })
           } else{
               trueOfalse = false
               elm.className = "diaOcupado"
@@ -183,19 +188,38 @@ if (localStorage.length !== 0){
 
 }
 
-// AL HACER CLICK LES CAMBIO LA CLASE PARA QUE NO PUEDAN VOLVER A SELECCIONARSE
+//                                      AL HACER CLICK LES CAMBIO LA CLASE PARA QUE NO PUEDAN VOLVER A SELECCIONARSE
+
+// Creo este array para traerme ahí el último carrito guardado en el LocalStorage
+let arrayProductos = []
 
 diaElegido.forEach(elm => {
   elm.addEventListener("click", (e) => {
     if(trueOfalse == false){
-        alert("No puede seleccionar más de un día de alquiler")
+        Swal.fire({
+            icon: "warning",
+            title: "No puede seleccionar más de un día de alquiler",      
+          })
     } else if(elm.className == "diaOcupado"){
-        alert("el dia esta ocupado")
+        Swal.fire({
+            icon: "warning",
+            title: "El día está ocupado",      
+          })
     } else{
         trueOfalse = false
         elm.className = "diaOcupado"
         let resultado = e.target.id
-        alert("Se realizo con éxito la reserva de la fecha "  + resultado)
+        let precioFinal = localStorage.getItem("precioFinal")//Me traigo el último carrito a través del LocalStorage
+        let productosSeleccionados = JSON.parse(localStorage.getItem("ultimoCarrito"))
+        productosSeleccionados.forEach(elem => {
+            arrayProductos.push(elem.nombre)            
+        });      
+        Swal.fire({
+            icon: "success",
+            title: "Se realizó con éxito la reserva de la fecha "  + resultado,
+            html:  `<p style= "text-decoration: underline;"><b>PRODUCTOS SELECCIONADOS</b></p>`+ `<p style= "padding: 10px; text-transform: uppercase;"><b>${arrayProductos.join("<br>")}</b></p>` +
+                `<p style= "padding: 10px;"><b> TOTAL: $${precioFinal}</b></p>`
+          })
         guardarFecha(resultado)
     }    
 })

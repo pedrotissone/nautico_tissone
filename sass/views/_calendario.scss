@@ -1,35 +1,59 @@
 
-.header__title{
-    margin-bottom: 3rem;
-    padding: 0.5rem;
-    text-align: center;
-    border: solid 1px black;
-    background-color: rgba(107, 107, 218, 0.811);
-    color: whitesmoke;
+body{
+   background-color: #81b5c638;
 }
+
+header{
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    align-items: flex-end;
+}
+
+.header__title{
+    text-align: center;
+    color: #807d8b;
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
+.main__calendario{
+    height: 100vh;
+    background-image: url(../../public/img/hero.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    margin-bottom: 2rem;
 
 
 .calendar {
-    background-color: lightgreen;
-    width: 40rem;
+    background-color:#d9af7bc9;
+    width: 60%;
     margin: auto;
     border: solid 1.5px black;
 
     &__info{
         display: flex;
         align-items: center;
-        padding: 0 1rem;
+        background-color: #6c242445;
 
         .calendar__prev{
             margin-right: auto;
             cursor: pointer;
-            padding: 0.3rem;
+            padding: 0.5rem;
+        }
+        .calendar__prev:hover{
+            background-color: #c7bdbd;
         }
 
         .calendar__next{
             margin-left: auto;
             cursor: pointer;
-            padding: 0.3rem;
+            padding: 0.5rem;
+        }
+
+        .calendar__next:hover{
+            background-color: #c7bdbd;
         }
 
         .calendar__month{            
@@ -46,7 +70,12 @@
 
     &__week, &__dates {
         display: grid;
-        grid-template-columns: repeat(7, 1fr);       
+        grid-template-columns: repeat(7, 1fr);
+        margin: 0.2rem;     
+    }
+
+    .calendar__day{
+        text-decoration: underline;
     }
 
     .calendar__item{
@@ -57,24 +86,25 @@
     }
 
     .calendar__today{
-        background-color: rgba(107, 107, 218, 0.811);
-        color: whitesmoke;       
+        background-color: rgb(13, 121, 170);
         width: 50%;
         margin: auto;
-        border-radius: 50%;     
+        border-radius: 50%;    
 
     }
 
     .calendar__lastDays{
-        color: rgb(243, 10, 10);
+        color: #fb0000;
     }
 
     .diaSeleccionable {
         cursor: pointer;
     }
     .diaSeleccionable:hover{
-        background-color: whitesmoke;
-        border: solid 1px blueviolet;
+        background-color: #91b7e4c9;
+        border: solid 1.5px #6c242445;
+        margin: auto;
+        width: 50%;
     }
 
     .diaOcupado{
@@ -86,4 +116,43 @@
         cursor: pointer;       
     }
    
+}
+}
+
+footer{
+    background: linear-gradient(45deg, rgba(9,85,121,1) 35%, rgb(40, 162, 187) 100%, rgba(22,0,36,1) 100%);
+    
+    .footer__top{
+        text-align: center;
+        color: aliceblue;
+        padding: 0.5rem;
+        font-size: larger;
+    }
+
+
+    .patrocinadores{
+        display: flex;
+        justify-content: space-evenly;
+        padding: 1.5rem;
+        background-color: #ffffff75;
+
+
+        img{
+            width: 13%;
+            border-radius: 50%;
+        }
+    }
+    
+    .contacto{
+        display: flex;
+        justify-content: space-around;
+        margin-bottom: 1rem;
+        padding: 1rem;
+    }
+    .copyright{
+        border-top: solid 1px cornsilk;
+        text-align: center;
+        padding: 1.5rem;
+        color: aliceblue;
+    }
 }
