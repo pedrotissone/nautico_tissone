@@ -187,7 +187,7 @@ function renderizarCarrito(obj) {
   obj.forEach(obj =>{
     const listado = document.createElement("li")
     listado.className = "listadoProductos"
-    listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
+    listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
     carritoRenderizado.appendChild(listado)
   })
   
@@ -360,14 +360,14 @@ function renderizarUltimoCarrito(obj) {
       if (obj.id > 6) {
         const listado = document.createElement("li")
         listado.className = "listadoProductos"
-        listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
+        listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
         carritoRenderizado.appendChild(listado)
         arrayCarrito.push(obj) 
         
       } else {
         const listado = document.createElement("li")
         listado.className = "listadoProductos"
-        listado.innerHTML += `${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
+        listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
         carritoRenderizado.appendChild(listado)
         arrayCarrito.push(obj)  
         return trueFalse = false
