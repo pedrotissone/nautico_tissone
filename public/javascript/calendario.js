@@ -128,7 +128,6 @@ function setNewDate() {
     diaElegido.forEach(elm => {
         elm.addEventListener("click", (e) => {
           if(trueOfalse == false){
-            //   alert("No puede seleccionar más de un día de alquiler")
             Swal.fire({
                 icon: "warning",
                 title: "No puede seleccionar más de un día de alquiler",      
@@ -138,15 +137,30 @@ function setNewDate() {
                 icon: "warning",
                 title: "El día está ocupado",      
               })
-          } else{
-              trueOfalse = false
-              elm.className = "diaOcupado"
-              let resultado = e.target.id
-              alert("Se realizo con éxito la reserva de la fecha "  + resultado)
-              guardarFecha(resultado)
-          }    
-      })
-      })
+          } else if(monthNumber <= mesDeComparacion && elm.innerHTML < currentDay){ // No puede elegirse un dia que ya haya pasado
+                Swal.fire({
+                    icon: "warning",
+                    title: "Ese día ya no se encuentra disponible",      
+                  })               
+            }else {
+            trueOfalse = false
+            elm.className = "diaOcupado"
+            let resultado = e.target.id
+            let precioFinal = localStorage.getItem("precioFinal")//Me traigo el último carrito a través del LocalStorage
+            let productosSeleccionados = JSON.parse(localStorage.getItem("ultimoCarrito"))
+            productosSeleccionados.forEach(elem => {
+                arrayProductos.push(elem.nombre)            
+            });      
+            Swal.fire({
+                icon: "success",
+                title: "Se realizó con éxito la reserva de la fecha "  + resultado,
+                html:  `<p style= "text-decoration: underline;"><b>PRODUCTOS SELECCIONADOS</b></p>`+ `<p style= "padding: 10px; text-transform: uppercase;"><b>${arrayProductos.join("<br>")}</b></p>` +
+                    `<p style= "padding: 10px;"><b> TOTAL: $${precioFinal}</b></p>`
+              })
+            guardarFecha(resultado)
+        }    
+        })
+        })
     if (localStorage.length !== 0){ //Recupero los dias del LocalStorage cada vez que cambio el mes
         recuperarFecha()    
     }else{
@@ -205,7 +219,12 @@ diaElegido.forEach(elm => {
             icon: "warning",
             title: "El día está ocupado",      
           })
-    } else{
+    }else if(monthNumber <= mesDeComparacion && elm.innerHTML < currentDay){ // No puede elegirse un dia que ya haya pasado
+        Swal.fire({
+            icon: "warning",
+            title: "Ese día ya no se encuentra disponible",      
+          })               
+    }else{
         trueOfalse = false
         elm.className = "diaOcupado"
         let resultado = e.target.id
