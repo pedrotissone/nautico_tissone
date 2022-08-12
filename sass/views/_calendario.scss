@@ -28,7 +28,8 @@ header{
 
 .calendar {
     background-color:#d9af7bc9;
-    width: 60%;
+    width: 50rem;
+    height: 25rem;
     margin: auto;
     border: solid 1.5px black;
 
@@ -71,7 +72,9 @@ header{
     &__week, &__dates {
         display: grid;
         grid-template-columns: repeat(7, 1fr);
-        margin: 0.2rem;     
+        margin: 0.5rem;
+        align-items: baseline;
+        padding: 0.3rem;     
     }
 
     .calendar__day{
@@ -148,6 +151,14 @@ footer{
         justify-content: space-around;
         margin-bottom: 1rem;
         padding: 1rem;
+
+        &__logos{
+            width: 3.5%;
+            height: auto;
+        }
+        .contacto__logos:hover{
+            cursor: pointer;
+        }
     }
     .copyright{
         border-top: solid 1px cornsilk;
@@ -155,4 +166,40 @@ footer{
         padding: 1.5rem;
         color: aliceblue;
     }
+}
+
+// MEDIA QUERIES
+
+
+@media screen and (max-width: 759px){
+    footer{
+        .contacto__logos{
+            width: 5%;
+        }
+        .patrocinadores{
+            img{
+                width: 18%;
+            }
+        }
+    }
+  
+}
+
+@media screen and (max-width:425px){
+   header{
+    align-items: center;
+   }
+
+   footer{
+    .contacto__logos{
+        width: 5.9%;
+    }
+    .patrocinadores{
+        img{
+            width: 23%;
+        }
+    }
+}
+
+   
 }
