@@ -137,7 +137,7 @@ function setNewDate() {
                 icon: "warning",
                 title: "El día está ocupado",      
               })
-          } else if(monthNumber <= mesDeComparacion && elm.innerHTML < currentDay){ // No puede elegirse un dia que ya haya pasado
+          } else if((monthNumber < mesDeComparacion) || (elm.innerHTML < currentDay && monthNumber <= mesDeComparacion)){ // No puede elegirse un dia que ya haya pasado
                 Swal.fire({
                     icon: "warning",
                     title: "Ese día ya no se encuentra disponible",      

@@ -278,9 +278,11 @@ footer {
   footer .patrocinadores img {
     width: 18%; } }
 
-@media screen and (max-width: 425px) {
+@media screen and (max-width: 450px) {
   header {
     align-items: center; }
+  .main__calendario {
+    height: 80vh; }
   footer .contacto__logos {
     width: 5.9%; }
   footer .patrocinadores img {
