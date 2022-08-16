@@ -1,6 +1,7 @@
+//                                                  E S T A  E S  L A  R A M A  D E  P R U E B A S
 
 
-                                              // PETICION DE DATOS A TRAVES DE FETCH A UNA API REMOTA SIMULADA
+                                          // PETICION DE DATOS A TRAVES DE FETCH A UNA API REMOTA SIMULADA
 
 const URL = "public/javascript/listadobarcos.json"
 
@@ -16,10 +17,7 @@ const traerCardsBarcos = (contenido)=>{
                 <a href="#table" class="btn btn-primary boton-barcos" id="${id}">SELECCIONAR</a>
               </div>
           </div>`
-}
-
-
- 
+} 
 
 
 const obtenerContenido = (URL)=> {
