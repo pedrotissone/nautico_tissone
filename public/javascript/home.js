@@ -79,12 +79,16 @@ class Equipamiento{
     }
 }
 
-const equipamiento1 = new Equipamiento(50, "GPS Garmin", 1000, 3)
-const equipamiento2 = new Equipamiento(51, "Prismatico", 2000, 2)
-const equipamiento3 = new Equipamiento(52, "Pinula", 500, 3)
-const equipamiento4 = new Equipamiento(53,  "Carta Nautica", 500, 5)
-const equipamiento5 = new Equipamiento(54,"Sextante", 2000, 1)
-const equipamiento6 = new Equipamiento(55, "Bichero", 500, 3)
+
+
+
+const equipamiento1 = new Equipamiento("x", "GPS Garmin", 1000, 3)
+const equipamiento2 = new Equipamiento("x", "Prismatico", 2000, 2)
+const equipamiento3 = new Equipamiento("x", "Pinula", 500, 3)
+const equipamiento4 = new Equipamiento("x",  "Carta Nautica", 500, 5)
+const equipamiento5 = new Equipamiento("x","Sextante", 2000, 1)
+const equipamiento6 = new Equipamiento("x", "Bichero", 500, 3)
+const equipamiento7 = new Equipamiento("x", "Vhf", 500, 3)
 
 
 //                                              A R R A Y S
@@ -92,11 +96,37 @@ const equipamiento6 = new Equipamiento(55, "Bichero", 500, 3)
 
 const arrayBarcos =[barco1, barco2, barco3, barco4, barco5, barco6]
 
-const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6]
+const arrayEquipamiento = [equipamiento1, equipamiento2, equipamiento3, equipamiento4, equipamiento5, equipamiento6, equipamiento7]
 
 let arrayCarrito = []
 
 
+//                                      FUNCION PARA GENERAR ID DINÁMICO A EL EQUIPAMIENTO USANDO MATH
+
+
+
+// function generarID() {
+//   let min = 1
+//   let max = 10000
+//   arrayEquipamiento.forEach((elm)=>{
+//         elm.id = (Math.random() * (max - min) + min).toFixed() // Hago que el id sea sin decimales y entre un min y max
+        
+//   })
+// }
+
+// generarID()
+
+//                                      FUNCION PARA GENERAR ID DINAMICO SIN USAR MATH (MUCHO MEJOR ASI)
+
+function generarID() {
+  for (let index = 0; index <= arrayEquipamiento.length; index++) {  
+    arrayEquipamiento.forEach((elm)=>{
+      elm.id = "A" + index++   
+  })    
+  }
+}
+
+generarID()
 
 
 
@@ -104,13 +134,15 @@ let arrayCarrito = []
 
                                                   // GENERACION DE TABLA DE PRODUCTOS DINAMICA
 
-function listarEquipamiento() {
-  arrayEquipamiento.forEach( (equip)=>{
-    const listado = `<tr>
+
+
+function listarEquipamiento() { 
+  arrayEquipamiento.forEach( (equip)=>{    
+    let listado =    `<tr>
                       <td>${equip.id}</td>
                       <td>${equip.nombre}</td>
                       <td>${equip.precio }</td>
-                      <td>${equip.cantidad}</td>
+                      <td id =${equip.id}>${equip.cantidad}</td>
                       <td><button class="boton  btn btn-primary" id="${equip.id}"> AGREGAR </button></td>
                     </tr>`
                     document.querySelector("tbody").innerHTML += listado                                                                               
@@ -118,6 +150,8 @@ function listarEquipamiento() {
 
 }
 listarEquipamiento()
+
+
 
 
 //                                                        CAMBIO DE COLOR DEL BOTON EQUIPAMIENTO AL HACER MOUSEDOWN/UP
@@ -159,7 +193,7 @@ function busquedaArrayBarcos(id){
 
                                                         // CARGA DE EQUIPAMIENTO AL CARRITO
 
-const boton = document.querySelectorAll(".boton")
+let boton = document.querySelectorAll(".boton")
 
 boton.forEach(elm => {
   elm.addEventListener("click", (e) => {
@@ -169,12 +203,18 @@ boton.forEach(elm => {
 })
 
 
-
 function busquedaArray(id){
   let resultado = arrayEquipamiento.filter(elm => elm.id == id)
-  console.log(resultado[0])
-  arrayCarrito.push(resultado[0])
-  renderizarCarrito(resultado)  
+  let celda = document.getElementById(id)
+  if(celda.innerText < 1){ //NO PERMITO AGREGAR EL PRODUCTO SI NO HAY STOCK
+    Swal.fire({
+      icon: "warning",
+      title: "No hay stock del producto seleccionado",
+    })
+  }else{
+    arrayCarrito.push(resultado[0])
+    renderizarCarrito(resultado) 
+  }     
 }
 
 //                                             RENDERIZAR TODOS LOS PRODUCTOS SELECCIONADOS (AL BOTON DE ELIMINAR LE PONGO EL MISMO ID QUE AL PRODUCTO)
@@ -185,10 +225,26 @@ function renderizarCarrito(obj) {
   obj.forEach(obj =>{
     const listado = document.createElement("li")
     listado.className = "listadoProductos"
-    listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre}<button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
+    listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre} <button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
     carritoRenderizado.appendChild(listado)
+    restoCantidadEquipamiento(obj)    
   })
   
+}
+
+
+                                                  // FUNCION PARA BAJAR LA CANTIDAD DE LOS ELEMENTOS AL SER SELECCIONADOS
+
+function restoCantidadEquipamiento(obj) {
+  let celda = document.getElementById(obj.id)  
+  celda.innerHTML = celda.innerText - 1    
+}
+
+//                                                   FUNCION PARA SUMAR NUEVAMENTE LA CANTIDAD AL ELEMENTO SELECCIONADO
+
+function sumoCantidadEquipamiento(id) {
+  let celda = document.getElementById(id) 
+   return celda.innerHTML = parseInt(celda.innerText) + 1 //CONVIERTO EL STRING EN NUMERO PARA QUE ME HAGA LA SUMA   
 }
 
 
@@ -199,7 +255,8 @@ const botonEliminar = document.getElementsByClassName("btn-danger")
 
 document.addEventListener("click", (e)=>{
   if(e.target.classList.contains("btn-danger")){
-    busquedaArrayEliminar(e.target.id) }
+    busquedaArrayEliminar(e.target.id)    
+  }
 
 })
 
@@ -220,6 +277,7 @@ function busquedaArrayEliminar(id){
     arrayCarrito.splice(resultado, 1)
     carritoRenderizado.removeChild(carritoRenderizado.children[resultado])
     trueFalseBarcos(id)
+    sumoCantidadEquipamiento(id) 
   }
 
 
@@ -292,23 +350,27 @@ const botonConfirmarAlquiler = document.getElementById("botonConfirmarAlquiler")
    
   })
 
+//                                                      FUNCION PARA BORRAR EL LISTADO DE PRODUCTOS Y EL CONTENIDO DEL MODAL
+ 
+
 function borrarListado() {
   carritoRenderizado.innerHTML = ""
   totalEnModal.innerText = ""
-  
-}  
+}
+
+//                                                    BOTONES CANCELAR Y CERRAR DEL MODAL
 
 const botonCancelar = document.getElementById("botonCancelar")
 botonCancelar.addEventListener("click", ()=>{
+  borrarListado()
    arrayCarrito.splice(0, arrayCarrito.length)
-   borrarListado()
    return trueFalse = true
 })
 
 const botonCerrar = document.getElementById("botonCerrar")
 botonCerrar.addEventListener("click", ()=>{
-  arrayCarrito.splice(0, arrayCarrito.length)
   borrarListado()
+  arrayCarrito.splice(0, arrayCarrito.length)
   return trueFalse = true
 })
 
