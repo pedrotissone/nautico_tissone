@@ -153,7 +153,6 @@ listarEquipamiento()
 
 
 
-
 //                                                        CAMBIO DE COLOR DEL BOTON EQUIPAMIENTO AL HACER MOUSEDOWN/UP
 
 let botonColor = document.querySelectorAll(".boton")
@@ -227,7 +226,11 @@ function renderizarCarrito(obj) {
     listado.className = "listadoProductos"
     listado.innerHTML += `<img src="./public/img/salvavidas.png" alt="">${obj.nombre} <button type="button" class="btn btn-danger" id="${obj.id}">Eliminar</button>`
     carritoRenderizado.appendChild(listado)
-    restoCantidadEquipamiento(obj)    
+    if(arrayBarcos.includes(obj)){ //Le agrego este if porque sino la funcion de cantidad me modificaba a NAN el boton de seleccionar barcos
+      
+    }else{
+      restoCantidadEquipamiento(obj)
+    }        
   })
   
 }
@@ -355,7 +358,20 @@ const botonConfirmarAlquiler = document.getElementById("botonConfirmarAlquiler")
 
 function borrarListado() {
   carritoRenderizado.innerHTML = ""
-  totalEnModal.innerText = ""
+  totalEnModal.innerText = ""  
+}
+
+//                                                  FUNCION PARA VOLVER A LA NORMALIDAD EL STOCK SI SE CANCELA LA COMPRA
+
+function recuperarStock(obj){
+  obj.forEach(elem => {
+    let comprobacion = document.getElementById(elem.id)
+    if (arrayEquipamiento.includes(elem)){
+      comprobacion.innerText = elem.cantidad
+    }else{
+
+    } 
+  });
 }
 
 //                                                    BOTONES CANCELAR Y CERRAR DEL MODAL
@@ -363,6 +379,7 @@ function borrarListado() {
 const botonCancelar = document.getElementById("botonCancelar")
 botonCancelar.addEventListener("click", ()=>{
   borrarListado()
+  recuperarStock(arrayCarrito)
    arrayCarrito.splice(0, arrayCarrito.length)
    return trueFalse = true
 })
@@ -370,6 +387,7 @@ botonCancelar.addEventListener("click", ()=>{
 const botonCerrar = document.getElementById("botonCerrar")
 botonCerrar.addEventListener("click", ()=>{
   borrarListado()
+  recuperarStock(arrayCarrito)
   arrayCarrito.splice(0, arrayCarrito.length)
   return trueFalse = true
 })
