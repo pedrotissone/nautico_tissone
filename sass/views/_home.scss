@@ -65,6 +65,7 @@
 }
 
 
+
 .btn-primary{
     color: white;
     background-color: #1212b3a1;
@@ -79,12 +80,13 @@
     border-color: unset;
 }
 
-.btn-primary2{
-    color: black;
-    background-color: rgb(71, 12, 12);
+.btn-primary2{    
+    color: white;
+    background-color: #1212b3a1;
     padding: 1.5%;
     border-radius: 0.375rem;
-    border: solid 1px rgb(71, 12, 12);
+    border: unset;      
+    
 }
 
 
@@ -134,7 +136,7 @@ section {
     width: 50%;
     height: auto;
     text-align: center;
-    font-size: large;
+    font-size: 1rem;
     font-weight: bolder;
     padding: 1rem 0.3rem;
     background-color: #8ea7ad;
@@ -185,6 +187,19 @@ section {
 
 //                              MEDIA QUERIES
 
+@media screen and (max-width: 750px){
+
+    #listadoCarrito{
+        padding: 0;
+    }
+
+    .listadoProductos{
+        width: 100%;        
+    }
+
+}
+
+
 @media screen and (max-width: 450px){
 
     html{
@@ -197,11 +212,7 @@ section {
 
     ul{
         text-align: center;
-    }
-
-    .listadoProductos{
-        width: 100%;
-    }
+    }   
 
 }
 

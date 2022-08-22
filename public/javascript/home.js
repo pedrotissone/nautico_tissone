@@ -157,12 +157,12 @@ listarEquipamiento()
 
 let botonColor = document.querySelectorAll(".boton")
 botonColor.forEach(btn =>{
-  btn.addEventListener("mousedown",(b)=>{
+  btn.addEventListener("click",(b)=>{
     btn.className = "btn-primary2"
   })
-  btn.addEventListener("mouseup",(b)=>{
-    btn.className = "btn-primary"
-  })
+  // btn.addEventListener("mouseup",(b)=>{
+  //   btn.className = "btn-primary"
+  // })
 })
 
  
